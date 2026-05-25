@@ -1,0 +1,74 @@
+baseURL: "http://localhost:1313/"
+locale: "en-US"
+defaultContentLanguage: "en"
+title: "Kotlin Learning Path"
+theme: "cupper-hugo-theme"
+enableGitInfo: false
+enableRobotsTXT: true
+
+taxonomies:
+  tag: tags
+
+permalinks:
+  study-guides: "/study-guides/:slug/"
+
+imaging:
+  quality: 95
+
+params:
+  description: "Beginner-friendly Kotlin tutorials and practice notes."
+  homeMetaContent: "A Kotlin learning path with detailed study guides and practice problems."
+  footer: "Built with [Hugo](https://gohugo.io/) using the [Cupper theme](https://github.com/BulkBeing/cupper-hugo-theme)."
+  dateFormat: "Jan 2, 2006"
+  hideHeaderLinks: false
+  search: true
+  showThemeSwitcher: true
+  defaultDarkTheme: false
+  moveFooterToHeader: false
+  navTitleText: "Kotlin Learning Path"
+  logoAlt: "Kotlin Learning Path"
+
+menu:
+  nav:
+    - name: "Home"
+      url: "/"
+      weight: 1
+    - name: "Study Guides"
+      url: "/study-guides/"
+      weight: 2
+    - name: "Tags"
+      url: "/tags/"
+      weight: 3
+    - name: "RSS"
+      url: "/index.xml"
+      weight: 4
+
+markup:
+  defaultMarkdownHandler: goldmark
+  goldmark:
+    extensions:
+      definitionList: true
+      footnote: true
+      linkify: true
+      strikethrough: true
+      table: true
+      taskList: true
+      typographer: true
+    parser:
+      attribute:
+        block: true
+        title: true
+      autoHeadingID: true
+    renderer:
+      hardWraps: false
+      unsafe: true
+      xhtml: false
+  highlight:
+    codeFences: false
+    lineNos: false
+    noClasses: true
+    style: monokai
+    tabWidth: 4
+  tableOfContents:
+    startLevel: 2
+    endLevel: 4
