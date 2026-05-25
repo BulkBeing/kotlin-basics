@@ -1,4 +1,4 @@
-baseURL: "https://bulkbeing.github.io/kotlin-learning-path/"
+baseURL: "https://bulkbeing.github.io/kotlin-basics/"
 publishDir: "docs"
 locale: "en-US"
 defaultContentLanguage: "en"

@@ -2,25 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://bulkbeing.github.io/kotlin-learning-path/study-guides/strings-and-string-templates/</loc>
+    <loc>https://bulkbeing.github.io/kotlin-basics/study-guides/strings-and-string-templates/</loc>
     <lastmod>2026-05-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://bulkbeing.github.io/kotlin-learning-path/tags/beginner/</loc>
+    <loc>https://bulkbeing.github.io/kotlin-basics/tags/beginner/</loc>
     <lastmod>2026-05-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://bulkbeing.github.io/kotlin-learning-path/tags/kotlin/</loc>
+    <loc>https://bulkbeing.github.io/kotlin-basics/tags/kotlin/</loc>
     <lastmod>2026-05-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://bulkbeing.github.io/kotlin-learning-path/</loc>
+    <loc>https://bulkbeing.github.io/kotlin-basics/</loc>
     <lastmod>2026-05-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://bulkbeing.github.io/kotlin-learning-path/tags/strings/</loc>
+    <loc>https://bulkbeing.github.io/kotlin-basics/tags/strings/</loc>
     <lastmod>2026-05-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://bulkbeing.github.io/kotlin-learning-path/study-guides/</loc>
+    <loc>https://bulkbeing.github.io/kotlin-basics/study-guides/</loc>
     <lastmod>2026-05-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://bulkbeing.github.io/kotlin-learning-path/tags/</loc>
+    <loc>https://bulkbeing.github.io/kotlin-basics/tags/</loc>
     <lastmod>2026-05-24T00:00:00+00:00</lastmod>
   </url>
 </urlset>

@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Kotlin Learning Path</title>
-    <link>https://bulkbeing.github.io/kotlin-learning-path/tags/</link>
+    <link>https://bulkbeing.github.io/kotlin-basics/tags/</link>
     <description>Recent content in Tags on Kotlin Learning Path</description>
     <generator>Hugo</generator>
     <language>en-US</language>
     <lastBuildDate>Sun, 24 May 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://bulkbeing.github.io/kotlin-learning-path/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://bulkbeing.github.io/kotlin-basics/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Beginner</title>
-      <link>https://bulkbeing.github.io/kotlin-learning-path/tags/beginner/</link>
+      <link>https://bulkbeing.github.io/kotlin-basics/tags/beginner/</link>
       <pubDate>Sun, 24 May 2026 00:00:00 +0000</pubDate>
-      <guid>https://bulkbeing.github.io/kotlin-learning-path/tags/beginner/</guid>
+      <guid>https://bulkbeing.github.io/kotlin-basics/tags/beginner/</guid>
       <description></description>
     </item>
     <item>
       <title>Kotlin</title>
-      <link>https://bulkbeing.github.io/kotlin-learning-path/tags/kotlin/</link>
+      <link>https://bulkbeing.github.io/kotlin-basics/tags/kotlin/</link>
       <pubDate>Sun, 24 May 2026 00:00:00 +0000</pubDate>
-      <guid>https://bulkbeing.github.io/kotlin-learning-path/tags/kotlin/</guid>
+      <guid>https://bulkbeing.github.io/kotlin-basics/tags/kotlin/</guid>
       <description></description>
     </item>
     <item>
       <title>Strings</title>
-      <link>https://bulkbeing.github.io/kotlin-learning-path/tags/strings/</link>
+      <link>https://bulkbeing.github.io/kotlin-basics/tags/strings/</link>
       <pubDate>Sun, 24 May 2026 00:00:00 +0000</pubDate>
-      <guid>https://bulkbeing.github.io/kotlin-learning-path/tags/strings/</guid>
+      <guid>https://bulkbeing.github.io/kotlin-basics/tags/strings/</guid>
       <description></description>
     </item>
   </channel>
