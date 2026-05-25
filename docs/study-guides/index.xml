@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Study Guides on Kotlin Learning Path</title>
+    <link>https://bulkbeing.github.io/kotlin-learning-path/study-guides/</link>
+    <description>Recent content in Study Guides on Kotlin Learning Path</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <lastBuildDate>Sun, 24 May 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://bulkbeing.github.io/kotlin-learning-path/study-guides/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Strings and String Templates</title>
+      <link>https://bulkbeing.github.io/kotlin-learning-path/study-guides/strings-and-string-templates/</link>
+      <pubDate>Sun, 24 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://bulkbeing.github.io/kotlin-learning-path/study-guides/strings-and-string-templates/</guid>
+      <description>A beginner-friendly Kotlin tutorial for strings, string templates, useful methods, and LeetCode easy practice problems.</description>
+    </item>
+  </channel>
+</rss>

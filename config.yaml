@@ -1,4 +1,5 @@
-baseURL: "http://localhost:1313/"
+baseURL: "https://bulkbeing.github.io/kotlin-learning-path/"
+publishDir: "docs"
 locale: "en-US"
 defaultContentLanguage: "en"
 title: "Kotlin Learning Path"

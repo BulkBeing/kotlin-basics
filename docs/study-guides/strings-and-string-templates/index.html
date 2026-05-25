@@ -1,0 +1,1906 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <meta name="generator" content="Hugo 0.161.1">
+  <link rel="canonical" href="https://bulkbeing.github.io/kotlin-learning-path/study-guides/strings-and-string-templates/" />
+
+  
+    
+    <meta name="description" content="A beginner-friendly Kotlin tutorial for strings, string templates, useful methods, and LeetCode easy practice problems.">
+  
+
+  <link rel="apple-touch-icon" sizes="180x180" href="https://bulkbeing.github.io/kotlin-learning-path/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://bulkbeing.github.io/kotlin-learning-path/favicon-32x32.png"> 
+  <link rel="icon" type="image/png" sizes="16x16" href="https://bulkbeing.github.io/kotlin-learning-path/favicon-16x16.png"> 
+  <link rel="manifest" href="https://bulkbeing.github.io/kotlin-learning-path/site.webmanifest"> 
+  <link rel="mask-icon" href="https://bulkbeing.github.io/kotlin-learning-path/safari-pinned-tab.svg" color="#000000"> 
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+
+  <style>
+    body {
+      visibility: hidden;
+      opacity: 0;
+    }
+  </style>
+
+  <style id="darkTheme">
+    .intro-and-nav,
+    .main-and-footer {
+      filter: invert(100%);
+    }
+
+    * {
+      background-color: inherit
+    }
+
+    img:not([src*=".svg"]),
+    .colors,
+    iframe,
+    .demo-container {
+      filter: invert(100%);
+    }
+  </style>
+
+  <link rel="stylesheet" href="/kotlin-learning-path/css/prism.css" media="none" onload="this.media='all';">
+
+  
+  
+  <link rel="stylesheet" type="text/css" href="/kotlin-learning-path/css/styles.css">
+
+  
+
+  
+  
+  <title>Strings and String Templates | Kotlin Learning Path</title>
+</head>
+
+  <body>
+    <a href="#main">skip to content</a>
+    <noscript>
+  <style>
+    body {
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
+</noscript>
+
+    <svg style="display: none">
+  <symbol id="bookmark" viewBox="0 0 40 50">
+   <g transform="translate(2266 3206.2)">
+    <path style="stroke:currentColor;stroke-width:3.2637;fill:none" d="m-2262.2-3203.4-.2331 42.195 16.319-16.318 16.318 16.318.2331-42.428z"/>
+   </g>
+  </symbol>
+
+  <symbol id="w3c" viewBox="0 0 127.09899 67.763">
+   <text font-size="83" style="font-size:83px;font-family:Trebuchet;letter-spacing:-12;fill-opacity:0" letter-spacing="-12" y="67.609352" x="-26.782778">W3C</text>
+   <text font-size="83" style="font-size:83px;font-weight:bold;font-family:Trebuchet;fill-opacity:0" y="67.609352" x="153.21722" font-weight="bold">SVG</text>
+   <path style="fill:currentColor;image-rendering:optimizeQuality;shape-rendering:geometricPrecision" d="m33.695.377 12.062 41.016 12.067-41.016h8.731l-19.968 67.386h-.831l-12.48-41.759-12.479 41.759h-.832l-19.965-67.386h8.736l12.061 41.016 8.154-27.618-3.993-13.397h8.737z"/>
+   <path style="fill:currentColor;image-rendering:optimizeQuality;shape-rendering:geometricPrecision" d="m91.355 46.132c0 6.104-1.624 11.234-4.862 15.394-3.248 4.158-7.45 6.237-12.607 6.237-3.882 0-7.263-1.238-10.148-3.702-2.885-2.47-5.02-5.812-6.406-10.022l6.82-2.829c1.001 2.552 2.317 4.562 3.953 6.028 1.636 1.469 3.56 2.207 5.781 2.207 2.329 0 4.3-1.306 5.909-3.911 1.609-2.606 2.411-5.738 2.411-9.401 0-4.049-.861-7.179-2.582-9.399-1.995-2.604-5.129-3.912-9.397-3.912h-3.327v-3.991l11.646-20.133h-14.062l-3.911 6.655h-2.493v-14.976h32.441v4.075l-12.31 21.217c4.324 1.385 7.596 3.911 9.815 7.571 2.22 3.659 3.329 7.953 3.329 12.892z"/>
+   <path style="fill:currentColor;image-rendering:optimizeQuality;shape-rendering:geometricPrecision" d="m125.21 0 1.414 8.6-5.008 9.583s-1.924-4.064-5.117-6.314c-2.693-1.899-4.447-2.309-7.186-1.746-3.527.73-7.516 4.938-9.258 10.13-2.084 6.21-2.104 9.218-2.178 11.978-.115 4.428.58 7.043.58 7.043s-3.04-5.626-3.011-13.866c.018-5.882.947-11.218 3.666-16.479 2.404-4.627 5.954-7.404 9.114-7.728 3.264-.343 5.848 1.229 7.841 2.938 2.089 1.788 4.213 5.698 4.213 5.698l4.94-9.837z"/>
+   <path style="fill:currentColor;image-rendering:optimizeQuality;shape-rendering:geometricPrecision" d="m125.82 48.674s-2.208 3.957-3.589 5.48c-1.379 1.524-3.849 4.209-6.896 5.555-3.049 1.343-4.646 1.598-7.661 1.306-3.01-.29-5.807-2.032-6.786-2.764-.979-.722-3.486-2.864-4.897-4.854-1.42-2-3.634-5.995-3.634-5.995s1.233 4.001 2.007 5.699c.442.977 1.81 3.965 3.749 6.572 1.805 2.425 5.315 6.604 10.652 7.545 5.336.945 9.002-1.449 9.907-2.031.907-.578 2.819-2.178 4.032-3.475 1.264-1.351 2.459-3.079 3.116-4.108.487-.758 1.276-2.286 1.276-2.286l-1.276-6.644z"/>
+  </symbol>
+
+  <symbol id="tag" viewBox="0 0 177.16535 177.16535">
+    <g transform="translate(0 -875.2)">
+     <path style="fill-rule:evenodd;stroke-width:0;fill:currentColor" d="m159.9 894.3-68.79 8.5872-75.42 77.336 61.931 60.397 75.429-76.565 6.8495-69.755zm-31.412 31.835a10.813 10.813 0 0 1 1.8443 2.247 10.813 10.813 0 0 1 -3.5174 14.872l-.0445.0275a10.813 10.813 0 0 1 -14.86 -3.5714 10.813 10.813 0 0 1 3.5563 -14.863 10.813 10.813 0 0 1 13.022 1.2884z"/>
+    </g>
+  </symbol>
+
+  <symbol id="balloon" viewBox="0 0 141.73228 177.16535">
+   <g transform="translate(0 -875.2)">
+    <g>
+     <path style="fill:currentColor" d="m68.156 882.83-.88753 1.4269c-4.9564 7.9666-6.3764 17.321-5.6731 37.378.36584 10.437 1.1246 23.51 1.6874 29.062.38895 3.8372 3.8278 32.454 4.6105 38.459 4.6694-.24176 9.2946.2879 14.377 1.481 1.2359-3.2937 5.2496-13.088 8.886-21.623 6.249-14.668 8.4128-21.264 10.253-31.252 1.2464-6.7626 1.6341-12.156 1.4204-19.764-.36325-12.93-2.1234-19.487-6.9377-25.843-2.0833-2.7507-6.9865-7.6112-7.9127-7.8436-.79716-.20019-6.6946-1.0922-6.7755-1.0248-.02213.0182-5.0006-.41858-7.5248-.22808l-2.149-.22808h-3.3738z"/>
+     <path style="fill:currentColor" d="m61.915 883.28-3.2484.4497c-1.7863.24724-3.5182.53481-3.8494.63994-2.4751.33811-4.7267.86957-6.7777 1.5696-.28598 0-1.0254.20146-2.3695.58589-5.0418 1.4418-6.6374 2.2604-8.2567 4.2364-6.281 7.6657-11.457 18.43-12.932 26.891-1.4667 8.4111.71353 22.583 5.0764 32.996 3.8064 9.0852 13.569 25.149 22.801 37.517 1.3741 1.841 2.1708 2.9286 2.4712 3.5792 3.5437-1.1699 6.8496-1.9336 10.082-2.3263-1.3569-5.7831-4.6968-21.86-6.8361-33.002-.92884-4.8368-2.4692-14.322-3.2452-19.991-.68557-5.0083-.77707-6.9534-.74159-15.791.04316-10.803.41822-16.162 1.5026-21.503 1.4593-5.9026 3.3494-11.077 6.3247-15.852z"/>
+     <path style="fill:currentColor" d="m94.499 885.78c-.10214-.0109-.13691 0-.0907.0409.16033.13489 1.329 1.0675 2.5976 2.0723 6.7003 5.307 11.273 14.568 12.658 25.638.52519 4.1949.24765 14.361-.5059 18.523-2.4775 13.684-9.7807 32.345-20.944 53.519l-3.0559 5.7971c2.8082.76579 5.7915 1.727 8.9926 2.8441 11.562-11.691 18.349-19.678 24.129-28.394 7.8992-11.913 11.132-20.234 12.24-31.518.98442-10.02-1.5579-20.876-6.7799-28.959-.2758-.4269-.57803-.86856-.89617-1.3166-3.247-6.13-9.752-12.053-21.264-16.131-2.3687-.86369-6.3657-2.0433-7.0802-2.1166z"/>
+     <path style="fill:currentColor" d="m32.52 892.22c-.20090-.13016-1.4606.81389-3.9132 2.7457-11.486 9.0476-17.632 24.186-16.078 39.61.79699 7.9138 2.4066 13.505 5.9184 20.562 5.8577 11.77 14.749 23.219 30.087 38.74.05838.059.12188.1244.18052.1838 1.3166-.5556 2.5965-1.0618 3.8429-1.5199-.66408-.32448-1.4608-1.3297-3.8116-4.4602-5.0951-6.785-8.7512-11.962-13.051-18.486-5.1379-7.7948-5.0097-7.5894-8.0586-13.054-6.2097-11.13-8.2674-17.725-8.6014-27.563-.21552-6.3494.13041-9.2733 1.775-14.987 2.1832-7.5849 3.9273-10.986 9.2693-18.07 1.7839-2.3656 2.6418-3.57 2.4409-3.7003z"/>
+     <path style="fill:currentColor" d="m69.133 992.37c-6.2405.0309-12.635.76718-19.554 2.5706 4.6956 4.7759 9.935 10.258 12.05 12.625l4.1272 4.6202h11.493l3.964-4.4516c2.0962-2.3541 7.4804-7.9845 12.201-12.768-8.378-1.4975-16.207-2.6353-24.281-2.5955z"/>
+     <rect style="stroke-width:0;fill:currentColor" ry="2.0328" height="27.746" width="22.766" y="1017.7" x="60.201"/>
+    </g>
+   </g>
+  </symbol>
+
+  <symbol id="info" viewBox="0 0 41.667 41.667">
+   <g transform="translate(-37.035 -1004.6)">
+    <path style="stroke-linejoin:round;stroke:currentColor;stroke-linecap:round;stroke-width:3.728;fill:none" d="m76.25 1030.2a18.968 18.968 0 0 1 -23.037 13.709 18.968 18.968 0 0 1 -13.738 -23.019 18.968 18.968 0 0 1 23.001 -13.768 18.968 18.968 0 0 1 13.798 22.984"/>
+    <g transform="matrix(1.1146 0 0 1.1146 -26.276 -124.92)">
+     <path style="stroke:currentColor;stroke-linecap:round;stroke-width:3.728;fill:none" d="m75.491 1039.5v-8.7472"/>
+     <path style="stroke-width:0;fill:currentColor" transform="scale(-1)" d="m-73.193-1024.5a2.3719 2.3719 0 0 1 -2.8807 1.7142 2.3719 2.3719 0 0 1 -1.718 -2.8785 2.3719 2.3719 0 0 1 2.8763 -1.7217 2.3719 2.3719 0 0 1 1.7254 2.8741"/>
+    </g>
+   </g>
+  </symbol>
+
+  <symbol id="warning" viewBox="0 0 48.430474 41.646302">
+    <g transform="translate(-1.1273 -1010.2)">
+     <path style="stroke-linejoin:round;stroke:currentColor;stroke-linecap:round;stroke-width:4.151;fill:none" d="m25.343 1012.3-22.14 37.496h44.28z"/>
+     <path style="stroke:currentColor;stroke-linecap:round;stroke-width:4.1512;fill:none" d="m25.54 1027.7v8.7472"/>
+     <path style="stroke-width:0;fill:currentColor" d="m27.839 1042.8a2.3719 2.3719 0 0 1 -2.8807 1.7143 2.3719 2.3719 0 0 1 -1.718 -2.8785 2.3719 2.3719 0 0 1 2.8763 -1.7217 2.3719 2.3719 0 0 1 1.7254 2.8741"/>
+    </g>
+  </symbol>
+
+  <symbol id="menu" viewBox="0 0 50 50">
+     <rect style="stroke-width:0;fill:currentColor" height="10" width="50" y="0" x="0"/>
+     <rect style="stroke-width:0;fill:currentColor" height="10" width="50" y="20" x="0"/>
+     <rect style="stroke-width:0;fill:currentColor" height="10" width="50" y="40" x="0"/>
+   </symbol>
+
+   <symbol id="link" viewBox="0 0 50 50">
+    <g transform="translate(0 -1002.4)">
+     <g transform="matrix(.095670 0 0 .095670 2.3233 1004.9)">
+      <g>
+       <path style="stroke-width:0;fill:currentColor" d="m452.84 192.9-128.65 128.65c-35.535 35.54-93.108 35.54-128.65 0l-42.881-42.886 42.881-42.876 42.884 42.876c11.845 11.822 31.064 11.846 42.886 0l128.64-128.64c11.816-11.831 11.816-31.066 0-42.9l-42.881-42.881c-11.822-11.814-31.064-11.814-42.887 0l-45.928 45.936c-21.292-12.531-45.491-17.905-69.449-16.291l72.501-72.526c35.535-35.521 93.136-35.521 128.64 0l42.886 42.881c35.535 35.523 35.535 93.141-.001 128.66zm-254.28 168.51-45.903 45.9c-11.845 11.846-31.064 11.817-42.881 0l-42.884-42.881c-11.845-11.821-11.845-31.041 0-42.886l128.65-128.65c11.819-11.814 31.069-11.814 42.884 0l42.886 42.886 42.876-42.886-42.876-42.881c-35.54-35.521-93.113-35.521-128.65 0l-128.65 128.64c-35.538 35.545-35.538 93.146 0 128.65l42.883 42.882c35.51 35.54 93.11 35.54 128.65 0l72.496-72.499c-23.956 1.597-48.092-3.784-69.474-16.283z"/>
+      </g>
+     </g>
+    </g>
+  </symbol>
+
+  <symbol id="doc" viewBox="0 0 35 45">
+   <g transform="translate(-147.53 -539.83)">
+    <path style="stroke:currentColor;stroke-width:2.4501;fill:none" d="m149.38 542.67v39.194h31.354v-39.194z"/>
+    <g style="stroke-width:25" transform="matrix(.098003 0 0 .098003 133.69 525.96)">
+     <path d="m220 252.36h200" style="stroke:currentColor;stroke-width:25;fill:none"/>
+     <path style="stroke:currentColor;stroke-width:25;fill:none" d="m220 409.95h200"/>
+     <path d="m220 488.74h200" style="stroke:currentColor;stroke-width:25;fill:none"/>
+     <path d="m220 331.15h200" style="stroke:currentColor;stroke-width:25;fill:none"/>
+    </g>
+   </g>
+ </symbol>
+
+ <symbol id="tick" viewBox="0 0 177.16535 177.16535">
+  <g transform="translate(0 -875.2)">
+   <rect style="stroke-width:0;fill:currentColor" transform="rotate(30)" height="155" width="40" y="702.99" x="556.82"/>
+   <rect style="stroke-width:0;fill:currentColor" transform="rotate(30)" height="40" width="90.404" y="817.99" x="506.42"/>
+  </g>
+ </symbol>
+</svg>
+
+    <div class="wrapper">
+      <header class="intro-and-nav" role="banner">
+  <div>
+    <div class="intro">
+      <a
+        class="logo"
+        href="https://bulkbeing.github.io/kotlin-learning-path/"
+        aria-label="Kotlin Learning Path home page"
+      >
+        
+          <h1>Kotlin Learning Path</h1>
+        
+      </a>
+      <p class="library-desc">
+         Beginner-friendly Kotlin tutorials and practice notes. 
+      </p>
+    </div>
+    <nav id="patterns-nav" class="patterns" role="navigation">
+  <h2 class="vh">Main navigation</h2>
+  <button id="menu-button" aria-expanded="false">
+    <svg viewBox="0 0 50 50" aria-hidden="true" focusable="false">
+      <use href="#menu"></use>
+    </svg>
+    Menu
+  </button>
+  
+  <ul id="patterns-list">
+  
+    <li class="pattern">
+      
+      
+      
+      
+      <a href="/kotlin-learning-path/" >
+        <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
+          <use href="#bookmark"></use>
+        </svg>
+        <span class="text">Home</span>
+      </a>
+    </li>
+  
+    <li class="pattern">
+      
+      
+      
+      
+      <a href="/kotlin-learning-path/study-guides/" >
+        <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
+          <use href="#bookmark"></use>
+        </svg>
+        <span class="text">Study Guides</span>
+      </a>
+    </li>
+  
+    <li class="pattern">
+      
+      
+      
+      
+      <a href="/kotlin-learning-path/tags/" >
+        <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
+          <use href="#bookmark"></use>
+        </svg>
+        <span class="text">Tags</span>
+      </a>
+    </li>
+  
+    <li class="pattern">
+      
+      
+      
+      
+      <a href="/kotlin-learning-path/index.xml" >
+        <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
+          <use href="#bookmark"></use>
+        </svg>
+        <span class="text">RSS</span>
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+    
+  </div>
+</header>
+
+      <div class="main-and-footer">
+        <div>
+          
+  <main id="main">
+    <h1>Strings and String Templates</h1>
+    <p>Audience: beginner Kotlin developer with some Android experience.</p>
+<p>Goal: understand Kotlin strings from basic syntax to common algorithm patterns used in interviews and LeetCode easy problems.</p>
+<h2 id="1-why-strings-matter">1. Why Strings Matter</h2>
+<p>In Android, strings show up everywhere:</p>
+<ul>
+<li>UI text from <code>TextView</code>, <code>EditText</code>, <code>Button</code>, and Compose <code>Text</code>.</li>
+<li>User input validation.</li>
+<li>API responses and JSON fields.</li>
+<li>File paths, URLs, dates, and identifiers.</li>
+<li>Search, filtering, formatting, and display logic.</li>
+</ul>
+<p>In Kotlin, a <code>String</code> is a sequence of characters. You can read from it, search it, split it, transform it, and build new strings from it. But strings are immutable, which means once a <code>String</code> is created, its content cannot be changed.</p>
+<pre><code class="language-kotlin">fun main() {
+    val name = &quot;kotlin&quot;
+    val upper = name.uppercase()
+
+    println(name)  // kotlin
+    println(upper) // KOTLIN
+}
+</code></pre>
+<p><code>uppercase()</code> does not modify <code>name</code>. It returns a new string.</p>
+<p>This is important for performance and for algorithm problems. If you repeatedly create new strings inside a loop, it can become expensive. For heavy string building, use <code>StringBuilder</code>.</p>
+<h2 id="2-creating-strings">2. Creating Strings</h2>
+<p>The simplest string is written with double quotes:</p>
+<pre><code class="language-kotlin">val language = &quot;Kotlin&quot;
+val message = &quot;Hello&quot;
+</code></pre>
+<p>What happens: both variables store string values. <code>language</code> stores six characters, and <code>message</code> stores five characters. Because they are declared with <code>val</code>, you cannot assign a different string to those variables later.</p>
+<p>Kotlin also has nullable strings:</p>
+<pre><code class="language-kotlin">val title: String = &quot;Profile&quot;
+val subtitle: String? = null
+</code></pre>
+<p>What happens: <code>title</code> must always contain a real <code>String</code>, while <code>subtitle</code> is allowed to contain either a <code>String</code> or <code>null</code>. The <code>?</code> after <code>String</code> is Kotlin&rsquo;s way of saying &ldquo;this value may be missing.&rdquo;</p>
+<p>You can only call regular string methods directly on non-null strings:</p>
+<pre><code class="language-kotlin">val text: String? = &quot;hello&quot;
+
+println(text?.uppercase()) // HELLO
+println(text ?: &quot;fallback&quot;) // hello
+</code></pre>
+<p>What happens: <code>text?.uppercase()</code> calls <code>uppercase()</code> only if <code>text</code> is not null. The Elvis operator <code>?:</code> returns <code>&quot;fallback&quot;</code> only when <code>text</code> is null, so this example prints the original <code>&quot;hello&quot;</code> value.</p>
+<p>Useful null-handling patterns:</p>
+<pre><code class="language-kotlin">val input: String? = null
+
+val safeText = input.orEmpty()
+val displayText = input ?: &quot;No text&quot;
+val length = input?.length ?: 0
+</code></pre>
+<p>What happens: because <code>input</code> is null, <code>orEmpty()</code> returns an empty string, the Elvis expression returns <code>&quot;No text&quot;</code>, and the safe length expression returns <code>0</code>. These patterns are common when converting optional API or UI input into safe display values.</p>
+<p><code>orEmpty()</code> is useful in Android UI code when a nullable string should become <code>&quot;&quot;</code>.</p>
+<h2 id="3-escaped-strings">3. Escaped Strings</h2>
+<p>Escaped strings use double quotes and allow escape sequences.</p>
+<pre><code class="language-kotlin">val line = &quot;Hello\nWorld&quot;
+println(line)
+</code></pre>
+<p>What happens: <code>\n</code> is interpreted as a newline character inside the string. The string still comes from one Kotlin literal, but when printed it appears on two lines.</p>
+<p>Output:</p>
+<pre><code class="language-text">Hello
+World
+</code></pre>
+<p>Common escape sequences:</p>
+<ul>
+<li><code>\n</code> creates a new line.</li>
+<li><code>\t</code> creates a tab.</li>
+<li><code>\&quot;</code> inserts a double quote.</li>
+<li><code>\\</code> inserts a backslash.</li>
+<li><code>\$</code> inserts a dollar sign in a regular escaped string.</li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-kotlin">val quote = &quot;She said, \&quot;Kotlin is fun.\&quot;&quot;
+val path = &quot;C:\\Users\\Demo&quot;
+val price = &quot;Total: \$9.99&quot;
+</code></pre>
+<p>What happens: <code>\&quot;</code> keeps the quote inside the string instead of ending it, <code>\\</code> stores a single backslash character, and <code>\$</code> stores a literal dollar sign instead of starting a string template.</p>
+<h2 id="4-raw-multiline-strings">4. Raw Multiline Strings</h2>
+<p>Raw strings use triple quotes:</p>
+<pre><code class="language-kotlin">val json = &quot;&quot;&quot;
+    {
+      &quot;name&quot;: &quot;Kotlin&quot;,
+      &quot;type&quot;: &quot;language&quot;
+    }
+&quot;&quot;&quot;
+</code></pre>
+<p>What happens: the triple-quoted string stores the line breaks and indentation exactly as written. This is convenient for text that would be awkward to write with many <code>\n</code> and <code>\&quot;</code> escape sequences.</p>
+<p>Raw strings can span multiple lines and do not use normal backslash escaping. This is helpful for JSON samples, SQL, regular expressions, and long UI messages.</p>
+<p>Use <code>trimIndent()</code> to remove common indentation:</p>
+<pre><code class="language-kotlin">val json = &quot;&quot;&quot;
+    {
+      &quot;name&quot;: &quot;Kotlin&quot;,
+      &quot;type&quot;: &quot;language&quot;
+    }
+&quot;&quot;&quot;.trimIndent()
+
+println(json)
+</code></pre>
+<p>What happens: <code>trimIndent()</code> looks at the common indentation shared by the non-blank lines and removes it. The JSON remains multiline, but it no longer includes the extra spaces caused by indenting the Kotlin code.</p>
+<p>Output:</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;Kotlin&quot;,
+  &quot;type&quot;: &quot;language&quot;
+}
+</code></pre>
+<p>Use <code>trimMargin()</code> when you want to mark the real start of each line:</p>
+<pre><code class="language-kotlin">val text = &quot;&quot;&quot;
+    |First line
+    |Second line
+    |Third line
+&quot;&quot;&quot;.trimMargin()
+</code></pre>
+<p>What happens: <code>trimMargin()</code> removes everything before and including the <code>|</code> margin marker on each line. This lets you align the raw string nicely in your source file without putting those spaces in the final text.</p>
+<p>You can choose a custom margin prefix:</p>
+<pre><code class="language-kotlin">val text = &quot;&quot;&quot;
+    #Title
+    #Body
+&quot;&quot;&quot;.trimMargin(&quot;#&quot;)
+</code></pre>
+<p>What happens: this is the same idea as the previous example, but <code>#</code> is used as the margin marker instead of the default <code>|</code>.</p>
+<p>To place a literal dollar sign inside a raw string, use <code>${'$'}</code>:</p>
+<pre><code class="language-kotlin">val price = &quot;&quot;&quot;
+    Price: ${'$'}9.99
+&quot;&quot;&quot;.trimIndent()
+</code></pre>
+<p>What happens: raw strings do not use <code>\$</code> for escaping, so <code>${'$'}</code> inserts the dollar character through a string template expression.</p>
+<h2 id="5-string-templates">5. String Templates</h2>
+<p>String templates let you insert values into strings.</p>
+<p>Use <code>$name</code> for a simple variable:</p>
+<pre><code class="language-kotlin">val name = &quot;Asha&quot;
+val greeting = &quot;Hello, $name&quot;
+
+println(greeting) // Hello, Asha
+</code></pre>
+<p>What happens: <code>$name</code> is replaced with the value stored in <code>name</code>, so the final string becomes <code>&quot;Hello, Asha&quot;</code>.</p>
+<p>Use <code>${expression}</code> for an expression:</p>
+<pre><code class="language-kotlin">val name = &quot;Asha&quot;
+val message = &quot;Your name has ${name.length} characters&quot;
+
+println(message) // Your name has 4 characters
+</code></pre>
+<p>What happens: Kotlin evaluates <code>name.length</code> first, gets <code>4</code>, and inserts that result into the string.</p>
+<p>String templates work with any expression:</p>
+<pre><code class="language-kotlin">val unreadCount = 5
+val status = &quot;You have ${if (unreadCount == 0) &quot;no&quot; else unreadCount} unread messages&quot;
+
+println(status) // You have 5 unread messages
+</code></pre>
+<p>What happens: the <code>if</code> expression runs inside <code>${...}</code>. Since <code>unreadCount</code> is <code>5</code>, the expression returns <code>5</code>, and that value is inserted into the message.</p>
+<p>They also call <code>toString()</code> automatically:</p>
+<pre><code class="language-kotlin">data class User(val id: Int, val name: String)
+
+val user = User(1, &quot;Maya&quot;)
+println(&quot;Loaded user: $user&quot;)
+// Loaded user: User(id=1, name=Maya)
+</code></pre>
+<p>What happens: <code>$user</code> becomes <code>user.toString()</code>. Data classes generate a useful <code>toString()</code> automatically, which is why the printed value includes the property names and values.</p>
+<h3 id="when-to-use-braces">When to Use Braces</h3>
+<p>Use braces when:</p>
+<ul>
+<li>You need an expression.</li>
+<li>The variable name touches other text.</li>
+<li>You want clarity.</li>
+</ul>
+<pre><code class="language-kotlin">val item = &quot;book&quot;
+
+println(&quot;One $item&quot;)       // One book
+println(&quot;Many ${item}s&quot;)   // Many books
+</code></pre>
+<p>What happens: <code>$item</code> works when the variable name is clearly separated from the surrounding text. <code>${item}</code> is needed before <code>s</code> so Kotlin knows the variable is <code>item</code>, not <code>items</code>.</p>
+<p>Without braces, Kotlin would look for a variable named <code>items</code>.</p>
+<h3 id="templates-vs-stringformat">Templates vs <code>String.format()</code></h3>
+<p>String templates are best when you are inserting values directly:</p>
+<pre><code class="language-kotlin">val name = &quot;Maya&quot;
+val score = 95
+
+println(&quot;$name scored $score points&quot;)
+</code></pre>
+<p>What happens: both <code>$name</code> and <code>$score</code> are replaced with their values. This is the most readable choice when you do not need special number formatting.</p>
+<p><code>String.format()</code> is useful when you need formatted numbers, fixed decimal places, or old-style placeholder formatting:</p>
+<pre><code class="language-kotlin">val price = 9.5
+
+println(String.format(&quot;%.2f&quot;, price)) // 9.50
+println(String.format(&quot;%S&quot;, &quot;hello&quot;)) // HELLO
+</code></pre>
+<p>What happens: <code>%.2f</code> formats the number with exactly two digits after the decimal point, and <code>%S</code> formats the string argument in uppercase.</p>
+<p>For Android/JVM code, use an explicit locale when formatting user-visible numbers:</p>
+<pre><code class="language-kotlin">import java.util.Locale
+
+val priceText = String.format(Locale.US, &quot;%.2f&quot;, price)
+</code></pre>
+<p>What happens: <code>Locale.US</code> tells the formatter which locale rules to use. This avoids surprises from device locales that use different decimal separators or casing rules.</p>
+<h3 id="android-example">Android Example</h3>
+<p>In real Android apps, prefer string resources for user-facing text because they support localization.</p>
+<p>For quick debugging, templates are fine:</p>
+<pre><code class="language-kotlin">Log.d(&quot;Profile&quot;, &quot;Loaded userId=$userId, name=$name&quot;)
+</code></pre>
+<p>What happens: the log message is assembled with the current <code>userId</code> and <code>name</code> values. This is useful for debugging because the message is not user-facing and does not need localization.</p>
+<p>For UI text, prefer:</p>
+<pre><code class="language-kotlin">// strings.xml:
+// &lt;string name=&quot;welcome_user&quot;&gt;Welcome, %1$s&lt;/string&gt;
+
+val text = context.getString(R.string.welcome_user, name)
+</code></pre>
+<p>What happens: Android loads the localized string resource and replaces <code>%1$s</code> with <code>name</code>. This keeps user-visible text translatable.</p>
+<p>String templates are still very useful for internal logs, tests, algorithm practice, and non-localized messages.</p>
+<h2 id="6-reading-basic-string-information">6. Reading Basic String Information</h2>
+<h3 id="length"><code>length</code></h3>
+<p>Returns the number of UTF-16 code units in the string.</p>
+<pre><code class="language-kotlin">val s = &quot;Kotlin&quot;
+println(s.length) // 6
+</code></pre>
+<p>What happens: Kotlin counts the string&rsquo;s stored character units and returns <code>6</code>. For ordinary English letters, this matches the number of visible characters.</p>
+<p>For normal English letters, this feels like &ldquo;number of characters.&rdquo; For some emoji and combined Unicode characters, <code>length</code> may not equal what a user visually sees.</p>
+<pre><code class="language-kotlin">val emoji = &quot;😀&quot;
+println(emoji.length) // Usually 2, because it uses a surrogate pair
+</code></pre>
+<p>What happens: this emoji is stored internally as two UTF-16 code units, so <code>length</code> reports <code>2</code> even though a user sees one emoji. This matters in UI text, but most beginner algorithm problems avoid this complexity.</p>
+<p>For most LeetCode easy problems, input usually uses ASCII lowercase or uppercase letters, so <code>length</code> works as expected.</p>
+<h3 id="isempty-and-isnotempty"><code>isEmpty()</code> and <code>isNotEmpty()</code></h3>
+<pre><code class="language-kotlin">val s = &quot;&quot;
+
+println(s.isEmpty())    // true
+println(s.isNotEmpty()) // false
+</code></pre>
+<p>What happens: <code>s</code> contains no characters, so <code>isEmpty()</code> is true. Since there are no characters, <code>isNotEmpty()</code> is false.</p>
+<p>Empty means length is <code>0</code>.</p>
+<h3 id="isblank-and-isnotblank"><code>isBlank()</code> and <code>isNotBlank()</code></h3>
+<pre><code class="language-kotlin">val s = &quot;   \n\t&quot;
+
+println(s.isBlank())    // true
+println(s.isNotBlank()) // false
+</code></pre>
+<p>What happens: the string contains whitespace characters, but no visible non-whitespace text. That makes it blank even though it is not technically empty.</p>
+<p>Blank means the string is empty or contains only whitespace.</p>
+<p>Common validation:</p>
+<pre><code class="language-kotlin">fun isValidName(name: String): Boolean {
+    return name.isNotBlank()
+}
+</code></pre>
+<p>What happens: this function accepts names that contain at least one non-whitespace character and rejects <code>&quot;&quot;</code>, <code>&quot;   &quot;</code>, and similar inputs.</p>
+<h2 id="7-accessing-characters">7. Accessing Characters</h2>
+<p>Strings can be indexed like arrays.</p>
+<pre><code class="language-kotlin">val s = &quot;Kotlin&quot;
+
+println(s[0]) // K
+println(s[1]) // o
+println(s[5]) // n
+</code></pre>
+<p>What happens: bracket access reads the character at a specific index. <code>s[0]</code> returns the first character, and <code>s[5]</code> returns the last character in <code>&quot;Kotlin&quot;</code>.</p>
+<p>Kotlin uses zero-based indexing:</p>
+<ul>
+<li>First character is at index <code>0</code>.</li>
+<li>Last character is at index <code>s.length - 1</code>.</li>
+</ul>
+<p>Useful properties:</p>
+<pre><code class="language-kotlin">val s = &quot;Kotlin&quot;
+
+println(s.indices)   // 0..5
+println(s.lastIndex) // 5
+</code></pre>
+<p>What happens: <code>indices</code> gives the valid index range for the string, and <code>lastIndex</code> gives the final valid position. These are safer than hardcoding numbers.</p>
+<p>Loop over characters:</p>
+<pre><code class="language-kotlin">for (ch in &quot;Kotlin&quot;) {
+    println(ch)
+}
+</code></pre>
+<p>What happens: the loop visits each character from left to right. On each iteration, <code>ch</code> holds the current character.</p>
+<p>Loop over indices:</p>
+<pre><code class="language-kotlin">val s = &quot;Kotlin&quot;
+
+for (i in s.indices) {
+    println(&quot;index=$i char=${s[i]}&quot;)
+}
+</code></pre>
+<p>What happens: the loop visits each valid index. This is useful when you need both the position <code>i</code> and the character <code>s[i]</code>.</p>
+<p>Loop backward:</p>
+<pre><code class="language-kotlin">val s = &quot;Kotlin&quot;
+
+for (i in s.lastIndex downTo 0) {
+    print(s[i])
+}
+// niltoK
+</code></pre>
+<p>What happens: <code>downTo</code> creates a decreasing range from the last index to <code>0</code>. Reading characters in that order prints the string backward.</p>
+<h3 id="first-last-single"><code>first()</code>, <code>last()</code>, <code>single()</code></h3>
+<pre><code class="language-kotlin">val s = &quot;abc&quot;
+
+println(s.first()) // a
+println(s.last())  // c
+</code></pre>
+<p>What happens: <code>first()</code> returns the character at index <code>0</code>, and <code>last()</code> returns the character at <code>lastIndex</code>.</p>
+<p><code>single()</code> expects exactly one character:</p>
+<pre><code class="language-kotlin">println(&quot;x&quot;.single()) // x
+</code></pre>
+<p>What happens: <code>&quot;x&quot;</code> has exactly one character, so <code>single()</code> can safely return it.</p>
+<p>Be careful:</p>
+<pre><code class="language-kotlin">// &quot;&quot;.first() throws NoSuchElementException
+// &quot;ab&quot;.single() throws IllegalArgumentException
+</code></pre>
+<p>What happens: these calls fail because the method requirements are not met. An empty string has no first character, and <code>&quot;ab&quot;</code> has more than one character.</p>
+<p>Use safe variants:</p>
+<pre><code class="language-kotlin">println(&quot;&quot;.firstOrNull()) // null
+println(&quot;&quot;.lastOrNull())  // null
+</code></pre>
+<p>What happens: the <code>OrNull</code> versions return <code>null</code> instead of throwing when the string does not contain a matching character.</p>
+<h2 id="8-comparing-strings">8. Comparing Strings</h2>
+<h3 id="heading"><code>==</code></h3>
+<p>In Kotlin, <code>==</code> checks structural equality. For strings, that means same text.</p>
+<pre><code class="language-kotlin">val a = &quot;hello&quot;
+val b = &quot;he&quot; + &quot;llo&quot;
+
+println(a == b) // true
+</code></pre>
+<p>What happens: Kotlin compares the text content of <code>a</code> and <code>b</code>, not whether they are the same object in memory. Both contain <code>&quot;hello&quot;</code>, so the result is true.</p>
+<h3 id="equals"><code>equals()</code></h3>
+<p>Use <code>equals()</code> when you need case-insensitive comparison:</p>
+<pre><code class="language-kotlin">val answer = &quot;Yes&quot;
+
+println(answer.equals(&quot;yes&quot;, ignoreCase = true)) // true
+</code></pre>
+<p>What happens: <code>ignoreCase = true</code> makes <code>Y</code> and <code>y</code> count as equal, so <code>&quot;Yes&quot;</code> matches <code>&quot;yes&quot;</code>.</p>
+<h3 id="compareto"><code>compareTo()</code></h3>
+<p><code>compareTo()</code> compares lexicographically, like dictionary order.</p>
+<pre><code class="language-kotlin">println(&quot;apple&quot;.compareTo(&quot;banana&quot;)) // negative
+println(&quot;cat&quot;.compareTo(&quot;cat&quot;))      // 0
+println(&quot;dog&quot;.compareTo(&quot;cat&quot;))      // positive
+</code></pre>
+<p>What happens: <code>compareTo()</code> returns a negative number when the left string sorts before the right string, <code>0</code> when they are equal, and a positive number when it sorts after.</p>
+<p>It can also ignore case:</p>
+<pre><code class="language-kotlin">println(&quot;abc&quot;.compareTo(&quot;ABC&quot;, ignoreCase = true)) // 0
+</code></pre>
+<p>What happens: ignoring case makes <code>&quot;abc&quot;</code> and <code>&quot;ABC&quot;</code> compare as equal, so the result is <code>0</code>.</p>
+<p>This is useful for sorting:</p>
+<pre><code class="language-kotlin">val names = listOf(&quot;Zoe&quot;, &quot;anna&quot;, &quot;Bob&quot;)
+println(names.sorted())
+println(names.sortedWith(String.CASE_INSENSITIVE_ORDER))
+</code></pre>
+<p>What happens: <code>sorted()</code> uses the default ordering, where uppercase and lowercase can affect order. <code>CASE_INSENSITIVE_ORDER</code> sorts by text while ignoring letter case.</p>
+<h2 id="9-searching-inside-strings">9. Searching Inside Strings</h2>
+<h3 id="contains"><code>contains()</code></h3>
+<pre><code class="language-kotlin">val text = &quot;Android Kotlin&quot;
+
+println(text.contains(&quot;Kotlin&quot;)) // true
+println(text.contains(&quot;XML&quot;))    // false
+</code></pre>
+<p>What happens: <code>contains()</code> scans the string for the requested text. It finds <code>&quot;Kotlin&quot;</code> inside <code>&quot;Android Kotlin&quot;</code>, but it does not find <code>&quot;XML&quot;</code>.</p>
+<p>Case-insensitive:</p>
+<pre><code class="language-kotlin">println(text.contains(&quot;kotlin&quot;, ignoreCase = true)) // true
+</code></pre>
+<p>What happens: <code>ignoreCase = true</code> allows lowercase <code>&quot;kotlin&quot;</code> to match uppercase <code>K</code> in <code>&quot;Kotlin&quot;</code>.</p>
+<p>You can also use the <code>in</code> operator:</p>
+<pre><code class="language-kotlin">println(&quot;Kotlin&quot; in text) // true
+</code></pre>
+<p>What happens: <code>&quot;Kotlin&quot; in text</code> is a readable operator form of <code>text.contains(&quot;Kotlin&quot;)</code>.</p>
+<h3 id="startswith-and-endswith"><code>startsWith()</code> and <code>endsWith()</code></h3>
+<pre><code class="language-kotlin">val file = &quot;photo.png&quot;
+
+println(file.startsWith(&quot;photo&quot;)) // true
+println(file.endsWith(&quot;.png&quot;))    // true
+</code></pre>
+<p>What happens: <code>startsWith()</code> checks the beginning of the string, while <code>endsWith()</code> checks the end. This is useful for prefixes, file extensions, and URL checks.</p>
+<p>Case-insensitive:</p>
+<pre><code class="language-kotlin">println(&quot;README.MD&quot;.endsWith(&quot;.md&quot;, ignoreCase = true)) // true
+</code></pre>
+<p>What happens: the file name ends with <code>.MD</code>, and the comparison treats <code>.MD</code> and <code>.md</code> as the same.</p>
+<h3 id="indexof-and-lastindexof"><code>indexOf()</code> and <code>lastIndexOf()</code></h3>
+<p><code>indexOf()</code> returns the first index where a character or substring appears. If not found, it returns <code>-1</code>.</p>
+<pre><code class="language-kotlin">val s = &quot;banana&quot;
+
+println(s.indexOf('a'))      // 1
+println(s.indexOf(&quot;na&quot;))     // 2
+println(s.indexOf('x'))      // -1
+println(s.lastIndexOf('a'))  // 5
+</code></pre>
+<p>What happens: <code>indexOf()</code> returns where the first match begins, while <code>lastIndexOf()</code> searches from the end. <code>-1</code> means the character or substring was not found.</p>
+<p>You can start searching from a specific index:</p>
+<pre><code class="language-kotlin">val s = &quot;banana&quot;
+
+println(s.indexOf('a', startIndex = 2)) // 3
+</code></pre>
+<p>What happens: Kotlin skips indexes before <code>2</code>, so it ignores the <code>'a'</code> at index <code>1</code> and finds the next one at index <code>3</code>.</p>
+<p>Common pattern:</p>
+<pre><code class="language-kotlin">val email = &quot;user@example.com&quot;
+val atIndex = email.indexOf('@')
+
+if (atIndex != -1) {
+    println(&quot;Domain starts at ${atIndex + 1}&quot;)
+}
+</code></pre>
+<p>What happens: the code first checks whether <code>@</code> exists. If it does, the domain begins one position after the <code>@</code> character.</p>
+<h3 id="find-and-findlast"><code>find()</code> and <code>findLast()</code></h3>
+<p>Find the first or last character matching a condition:</p>
+<pre><code class="language-kotlin">val s = &quot;abc123&quot;
+
+println(s.find { it.isDigit() })     // 1
+println(s.findLast { it.isLetter() }) // c
+</code></pre>
+<p>What happens: <code>find()</code> returns the first character that passes the condition, and <code>findLast()</code> returns the last one. Here the first digit is <code>'1'</code>, and the last letter is <code>'c'</code>.</p>
+<p>They return <code>Char?</code>, so the result may be null.</p>
+<h2 id="10-extracting-parts-of-a-string">10. Extracting Parts of a String</h2>
+<h3 id="substring"><code>substring()</code></h3>
+<pre><code class="language-kotlin">val s = &quot;Kotlin&quot;
+
+println(s.substring(0, 3)) // Kot
+println(s.substring(3))    // lin
+</code></pre>
+<p>What happens: <code>substring(0, 3)</code> takes characters from index <code>0</code> up to but not including index <code>3</code>. <code>substring(3)</code> starts at index <code>3</code> and keeps everything to the end.</p>
+<p>The end index is exclusive:</p>
+<pre><code class="language-text">substring(startIndex, endIndex)
+includes startIndex, excludes endIndex
+</code></pre>
+<p>For <code>&quot;Kotlin&quot;</code>:</p>
+<pre><code class="language-text">K o t l i n
+0 1 2 3 4 5
+</code></pre>
+<p><code>s.substring(0, 3)</code> returns characters at indices <code>0</code>, <code>1</code>, and <code>2</code>.</p>
+<h3 id="substringbefore-and-substringafter"><code>substringBefore()</code> and <code>substringAfter()</code></h3>
+<p>These are great for parsing simple text:</p>
+<pre><code class="language-kotlin">val email = &quot;user@example.com&quot;
+
+println(email.substringBefore(&quot;@&quot;)) // user
+println(email.substringAfter(&quot;@&quot;))  // example.com
+</code></pre>
+<p>What happens: Kotlin finds the <code>@</code> delimiter. <code>substringBefore(&quot;@&quot;)</code> returns everything to the left of it, and <code>substringAfter(&quot;@&quot;)</code> returns everything to the right.</p>
+<p>If the delimiter is not found:</p>
+<pre><code class="language-kotlin">val text = &quot;username&quot;
+
+println(text.substringBefore(&quot;@&quot;)) // username
+println(text.substringAfter(&quot;@&quot;))  // username
+</code></pre>
+<p>What happens: because <code>@</code> is missing, both methods return the original string by default. This is useful to know because missing delimiters do not automatically throw an error.</p>
+<p>You can provide a fallback:</p>
+<pre><code class="language-kotlin">println(text.substringAfter(&quot;@&quot;, missingDelimiterValue = &quot;no-domain&quot;))
+</code></pre>
+<p>What happens: if <code>@</code> is missing, Kotlin returns <code>&quot;no-domain&quot;</code> instead of returning the original string.</p>
+<p>Useful related methods:</p>
+<pre><code class="language-kotlin">val path = &quot;/users/photos/profile.png&quot;
+
+println(path.substringBeforeLast(&quot;/&quot;)) // /users/photos
+println(path.substringAfterLast(&quot;/&quot;))  // profile.png
+</code></pre>
+<p>What happens: these methods use the last <code>/</code>, not the first one. That makes them useful for path-like strings where the final segment has special meaning.</p>
+<h3 id="take-takelast-drop-droplast"><code>take()</code>, <code>takeLast()</code>, <code>drop()</code>, <code>dropLast()</code></h3>
+<pre><code class="language-kotlin">val s = &quot;Kotlin&quot;
+
+println(s.take(3))     // Kot
+println(s.takeLast(3)) // lin
+println(s.drop(3))     // lin
+println(s.dropLast(3)) // Kot
+</code></pre>
+<p>What happens: <code>take</code> keeps characters, while <code>drop</code> removes characters. The <code>Last</code> versions work from the right side of the string.</p>
+<p>These are often easier to read than <code>substring()</code>.</p>
+<h3 id="takewhile-and-dropwhile"><code>takeWhile()</code> and <code>dropWhile()</code></h3>
+<pre><code class="language-kotlin">val s = &quot;123abc456&quot;
+
+println(s.takeWhile { it.isDigit() }) // 123
+println(s.dropWhile { it.isDigit() }) // abc456
+</code></pre>
+<p>What happens: both methods scan from the start. <code>takeWhile</code> keeps the leading digits, while <code>dropWhile</code> removes the leading digits and returns the rest.</p>
+<h2 id="11-changing-and-cleaning-strings">11. Changing and Cleaning Strings</h2>
+<p>Remember: these return new strings.</p>
+<h3 id="uppercase-and-lowercase"><code>uppercase()</code> and <code>lowercase()</code></h3>
+<pre><code class="language-kotlin">val s = &quot;Kotlin&quot;
+
+println(s.uppercase()) // KOTLIN
+println(s.lowercase()) // kotlin
+</code></pre>
+<p>What happens: Kotlin creates uppercase and lowercase copies. The original <code>s</code> still contains <code>&quot;Kotlin&quot;</code>.</p>
+<p>For Android/JVM code where locale matters, use an explicit locale:</p>
+<pre><code class="language-kotlin">import java.util.Locale
+
+val normalized = &quot;TITLE&quot;.lowercase(Locale.ROOT)
+</code></pre>
+<p>What happens: <code>Locale.ROOT</code> applies stable, language-neutral casing rules. This is a good default when normalizing values for comparison or storage.</p>
+<p>This helps avoid language-specific casing surprises.</p>
+<h3 id="replace"><code>replace()</code></h3>
+<p>Replace all occurrences:</p>
+<pre><code class="language-kotlin">val s = &quot;banana&quot;
+
+println(s.replace(&quot;na&quot;, &quot;NA&quot;)) // baNANA
+println(s.replace('a', 'o'))   // bonono
+</code></pre>
+<p>What happens: <code>replace(&quot;na&quot;, &quot;NA&quot;)</code> changes every <code>&quot;na&quot;</code> substring, and <code>replace('a', 'o')</code> changes every <code>'a'</code> character. Both return new strings.</p>
+<p>Case-insensitive:</p>
+<pre><code class="language-kotlin">println(&quot;Hello HELLO&quot;.replace(&quot;hello&quot;, &quot;hi&quot;, ignoreCase = true))
+// hi hi
+</code></pre>
+<p>What happens: both <code>&quot;Hello&quot;</code> and <code>&quot;HELLO&quot;</code> match because case is ignored, so both are replaced with <code>&quot;hi&quot;</code>.</p>
+<h3 id="replacefirst"><code>replaceFirst()</code></h3>
+<pre><code class="language-kotlin">val s = &quot;one one one&quot;
+
+println(s.replaceFirst(&quot;one&quot;, &quot;two&quot;)) // two one one
+</code></pre>
+<p>What happens: only the first <code>&quot;one&quot;</code> is replaced. Later occurrences are left unchanged.</p>
+<h3 id="replacerange"><code>replaceRange()</code></h3>
+<pre><code class="language-kotlin">val phone = &quot;1234567890&quot;
+val masked = phone.replaceRange(3, 7, &quot;****&quot;)
+
+println(masked) // 123****890
+</code></pre>
+<p>What happens: Kotlin removes the characters from index <code>3</code> up to but not including index <code>7</code>, then inserts <code>&quot;****&quot;</code> at that position. In <code>&quot;1234567890&quot;</code>, the removed part is <code>&quot;4567&quot;</code>.</p>
+<h3 id="removeprefix-removesuffix-removesurrounding"><code>removePrefix()</code>, <code>removeSuffix()</code>, <code>removeSurrounding()</code></h3>
+<pre><code class="language-kotlin">val url = &quot;https://example.com&quot;
+println(url.removePrefix(&quot;https://&quot;)) // example.com
+
+val file = &quot;image.png&quot;
+println(file.removeSuffix(&quot;.png&quot;)) // image
+
+val quoted = &quot;\&quot;hello\&quot;&quot;
+println(quoted.removeSurrounding(&quot;\&quot;&quot;)) // hello
+</code></pre>
+<p>What happens: <code>removePrefix()</code> removes the beginning only if it matches, <code>removeSuffix()</code> removes the ending only if it matches, and <code>removeSurrounding()</code> removes matching text from both sides.</p>
+<p>These only remove text if it exists.</p>
+<h3 id="trim-trimstart-trimend"><code>trim()</code>, <code>trimStart()</code>, <code>trimEnd()</code></h3>
+<pre><code class="language-kotlin">val input = &quot;   hello   &quot;
+
+println(input.trim())      // hello
+println(input.trimStart()) // hello   
+println(input.trimEnd())   //    hello
+</code></pre>
+<p>What happens: <code>trim()</code> removes whitespace from both sides, <code>trimStart()</code> removes only the left side, and <code>trimEnd()</code> removes only the right side. Spaces in the middle would stay.</p>
+<p>You can trim specific characters:</p>
+<pre><code class="language-kotlin">val path = &quot;/users/&quot;
+
+println(path.trim('/')) // users
+</code></pre>
+<p>What happens: <code>trim('/')</code> removes <code>/</code> characters from the beginning and end. It does not remove characters from the middle.</p>
+<p>Or use a predicate:</p>
+<pre><code class="language-kotlin">val text = &quot;***Important***&quot;
+
+println(text.trim { it == '*' }) // Important
+</code></pre>
+<p>What happens: Kotlin removes characters from both ends while the predicate is true. It stops trimming when it reaches <code>I</code> on the left and <code>t</code> on the right.</p>
+<h3 id="padstart-and-padend"><code>padStart()</code> and <code>padEnd()</code></h3>
+<pre><code class="language-kotlin">val number = &quot;42&quot;
+
+println(number.padStart(5, '0')) // 00042
+println(number.padEnd(5, '.'))   // 42...
+</code></pre>
+<p>What happens: <code>padStart()</code> adds characters to the left until the string reaches length <code>5</code>, and <code>padEnd()</code> adds characters to the right.</p>
+<p>Useful for formatting IDs, timers, and fixed-width output.</p>
+<h3 id="repeat"><code>repeat()</code></h3>
+<pre><code class="language-kotlin">println(&quot;ha&quot;.repeat(3)) // hahaha
+</code></pre>
+<p>What happens: <code>repeat(3)</code> concatenates the original string three times.</p>
+<h3 id="reversed"><code>reversed()</code></h3>
+<pre><code class="language-kotlin">println(&quot;abc&quot;.reversed()) // cba
+</code></pre>
+<p>What happens: <code>reversed()</code> returns a new string with the characters in the opposite order.</p>
+<p>Useful for palindrome checks.</p>
+<h2 id="12-splitting-and-joining">12. Splitting and Joining</h2>
+<h3 id="split"><code>split()</code></h3>
+<pre><code class="language-kotlin">val csv = &quot;red,green,blue&quot;
+val colors = csv.split(&quot;,&quot;)
+
+println(colors) // [red, green, blue]
+</code></pre>
+<p>What happens: Kotlin cuts the string wherever it sees <code>,</code> and returns the pieces as a <code>List&lt;String&gt;</code>.</p>
+<p>Kotlin&rsquo;s <code>split()</code> can accept multiple delimiters:</p>
+<pre><code class="language-kotlin">val text = &quot;one,two;three four&quot;
+val words = text.split(&quot;,&quot;, &quot;;&quot;, &quot; &quot;)
+
+println(words) // [one, two, three, four]
+</code></pre>
+<p>What happens: Kotlin treats comma, semicolon, and space as separators. Each separator creates a boundary between words.</p>
+<p>Limit the number of parts:</p>
+<pre><code class="language-kotlin">val pair = &quot;key=value=extra&quot;
+println(pair.split(&quot;=&quot;, limit = 2)) // [key, value=extra]
+</code></pre>
+<p>What happens: <code>limit = 2</code> allows only two final pieces. Kotlin splits at the first <code>=</code>, then keeps the rest together as <code>&quot;value=extra&quot;</code>.</p>
+<p>Ignore case:</p>
+<pre><code class="language-kotlin">val text = &quot;aXbxb&quot;
+println(text.split(&quot;x&quot;, ignoreCase = true)) // [a, b, b]
+</code></pre>
+<p>What happens: both <code>X</code> and <code>x</code> are treated as delimiters because case is ignored.</p>
+<p>Remove empty results:</p>
+<pre><code class="language-kotlin">val text = &quot;a,,b,&quot;
+println(text.split(&quot;,&quot;))
+// [a, , b, ]
+
+println(text.split(&quot;,&quot;).filter { it.isNotEmpty() })
+// [a, b]
+</code></pre>
+<p>What happens: splitting <code>&quot;a,,b,&quot;</code> creates empty strings where delimiters are adjacent or trailing. Filtering with <code>isNotEmpty()</code> removes those empty pieces.</p>
+<p>When simple input may contain repeated spaces, split first and then remove empty pieces:</p>
+<pre><code class="language-kotlin">val input = &quot;one   two   three&quot;
+val words = input.split(&quot; &quot;).filter { it.isNotEmpty() }
+
+println(words) // [one, two, three]
+</code></pre>
+<p>What happens: <code>split(&quot; &quot;)</code> creates empty pieces for repeated spaces. The <code>filter</code> call removes them, leaving only real words.</p>
+<h3 id="lines-and-linesequence"><code>lines()</code> and <code>lineSequence()</code></h3>
+<pre><code class="language-kotlin">val text = &quot;&quot;&quot;
+    first
+    second
+    third
+&quot;&quot;&quot;.trimIndent()
+
+println(text.lines()) // [first, second, third]
+</code></pre>
+<p>What happens: <code>lines()</code> breaks the multiline string at line boundaries and returns each line as a list item.</p>
+<p><code>lineSequence()</code> is useful for large text because it can process lazily:</p>
+<pre><code class="language-kotlin">val count = text.lineSequence()
+    .filter { it.isNotBlank() }
+    .count()
+</code></pre>
+<p>What happens: <code>lineSequence()</code> walks through the lines lazily, <code>filter</code> keeps non-blank lines, and <code>count()</code> counts how many remain.</p>
+<h3 id="jointostring"><code>joinToString()</code></h3>
+<p><code>joinToString()</code> is a collection method, but it is used constantly with strings.</p>
+<pre><code class="language-kotlin">val words = listOf(&quot;Kotlin&quot;, &quot;is&quot;, &quot;fun&quot;)
+val sentence = words.joinToString(&quot; &quot;)
+
+println(sentence) // Kotlin is fun
+</code></pre>
+<p>What happens: <code>joinToString(&quot; &quot;)</code> places a space between each list item and combines them into one string.</p>
+<p>Customize prefix, suffix, and transform:</p>
+<pre><code class="language-kotlin">val names = listOf(&quot;asha&quot;, &quot;maya&quot;, &quot;ravi&quot;)
+
+val display = names.joinToString(
+    separator = &quot;, &quot;,
+    prefix = &quot;[&quot;,
+    suffix = &quot;]&quot;
+) { it.replaceFirstChar { ch -&gt; ch.uppercase() } }
+
+println(display) // [Asha, Maya, Ravi]
+</code></pre>
+<p>What happens: each name is transformed before joining, the names are separated by <code>&quot;, &quot;</code>, and the final result is wrapped with <code>[</code> and <code>]</code>.</p>
+<h2 id="13-character-checks">13. Character Checks</h2>
+<p>Kotlin has useful <code>Char</code> methods:</p>
+<pre><code class="language-kotlin">val ch = 'A'
+
+println(ch.isLetter())      // true
+println(ch.isDigit())       // false
+println(ch.isLetterOrDigit()) // true
+println(ch.isWhitespace())  // false
+println(ch.isUpperCase())   // true
+println(ch.isLowerCase())   // false
+println(ch.lowercaseChar()) // a
+</code></pre>
+<p>What happens: each method asks a question about the character. <code>lowercaseChar()</code> returns a lowercase copy of the character instead of changing <code>ch</code>.</p>
+<p>These are important in string algorithms.</p>
+<p>Example: keep only letters and digits.</p>
+<pre><code class="language-kotlin">fun clean(input: String): String {
+    return input
+        .filter { it.isLetterOrDigit() }
+        .lowercase()
+}
+
+println(clean(&quot;A man, a plan, a canal: Panama&quot;))
+// amanaplanacanalpanama
+</code></pre>
+<p>What happens: <code>filter</code> keeps only letters and digits, then <code>lowercase()</code> normalizes the remaining text. Punctuation, spaces, and case differences disappear.</p>
+<h2 id="14-strings-as-collections-of-characters">14. Strings as Collections of Characters</h2>
+<p>Because a string is a <code>CharSequence</code>, many collection-like operations work.</p>
+<h3 id="foreach"><code>forEach()</code></h3>
+<pre><code class="language-kotlin">&quot;abc&quot;.forEach { ch -&gt;
+    println(ch)
+}
+</code></pre>
+<p>What happens: <code>forEach</code> runs the lambda once for every character. The variable <code>ch</code> is the current character during each run.</p>
+<h3 id="count"><code>count()</code></h3>
+<pre><code class="language-kotlin">val digits = &quot;a1b2c3&quot;.count { it.isDigit() }
+println(digits) // 3
+</code></pre>
+<p>What happens: <code>count</code> checks each character with <code>isDigit()</code> and returns how many characters passed the check.</p>
+<h3 id="any-all-none"><code>any()</code>, <code>all()</code>, <code>none()</code></h3>
+<pre><code class="language-kotlin">val password = &quot;abc123&quot;
+
+println(password.any { it.isDigit() }) // true
+println(password.all { it.isLetterOrDigit() }) // true
+println(password.none { it.isWhitespace() }) // true
+</code></pre>
+<p>What happens: <code>any</code> asks whether at least one character matches, <code>all</code> asks whether every character matches, and <code>none</code> asks whether zero characters match.</p>
+<h3 id="filter"><code>filter()</code></h3>
+<pre><code class="language-kotlin">val onlyDigits = &quot;a1b2c3&quot;.filter { it.isDigit() }
+println(onlyDigits) // 123
+</code></pre>
+<p>What happens: <code>filter</code> keeps only the characters where <code>isDigit()</code> returns true. For strings, the result is another string.</p>
+<h3 id="map"><code>map()</code></h3>
+<p><code>map()</code> returns a <code>List</code>, not a <code>String</code>.</p>
+<pre><code class="language-kotlin">val codes = &quot;abc&quot;.map { it.code }
+println(codes) // [97, 98, 99]
+</code></pre>
+<p>What happens: <code>map</code> converts each character to its Unicode code point value. Because <code>map</code> transforms items, the result is a list of integers, not a string.</p>
+<p>To make a string again:</p>
+<pre><code class="language-kotlin">val shifted = &quot;abc&quot;
+    .map { ch -&gt; ch + 1 }
+    .joinToString(&quot;&quot;)
+
+println(shifted) // bcd
+</code></pre>
+<p>What happens: each character is shifted forward by one (<code>'a'</code> to <code>'b'</code>, <code>'b'</code> to <code>'c'</code>, and so on). <code>joinToString(&quot;&quot;)</code> combines the transformed characters without separators.</p>
+<p>For simple transformations, <code>map</code> plus <code>joinToString(&quot;&quot;)</code> is fine. In performance-sensitive loops, use <code>StringBuilder</code>.</p>
+<h3 id="chunked"><code>chunked()</code></h3>
+<pre><code class="language-kotlin">val card = &quot;1234567812345678&quot;
+println(card.chunked(4)) // [1234, 5678, 1234, 5678]
+</code></pre>
+<p>What happens: <code>chunked(4)</code> groups the string into pieces of four characters each.</p>
+<p>With transform:</p>
+<pre><code class="language-kotlin">val groups = card.chunked(4)
+val hidden = groups.mapIndexed { index, group -&gt;
+    if (index == groups.lastIndex) group else &quot;****&quot;
+}.joinToString(&quot; &quot;)
+
+println(hidden) // **** **** **** 5678
+</code></pre>
+<p>What happens: the card number is first split into groups. <code>mapIndexed</code> replaces every group except the last one with <code>&quot;****&quot;</code>, then <code>joinToString(&quot; &quot;)</code> adds spaces between groups.</p>
+<h3 id="windowed"><code>windowed()</code></h3>
+<p><code>windowed()</code> gives sliding windows.</p>
+<pre><code class="language-kotlin">val s = &quot;abcd&quot;
+
+println(s.windowed(2)) // [ab, bc, cd]
+println(s.windowed(3)) // [abc, bcd]
+</code></pre>
+<p>What happens: <code>windowed()</code> creates overlapping slices. With size <code>2</code>, Kotlin reads <code>&quot;ab&quot;</code>, then moves one character and reads <code>&quot;bc&quot;</code>, then <code>&quot;cd&quot;</code>.</p>
+<p>Useful for substring pattern problems.</p>
+<h2 id="15-parsing-strings-to-numbers">15. Parsing Strings to Numbers</h2>
+<p>Common conversions:</p>
+<pre><code class="language-kotlin">val age = &quot;25&quot;.toInt()
+val price = &quot;12.50&quot;.toDouble()
+val count = &quot;100&quot;.toLong()
+</code></pre>
+<p>What happens: Kotlin parses the text into numeric types. After conversion, <code>age</code> is an <code>Int</code>, <code>price</code> is a <code>Double</code>, and <code>count</code> is a <code>Long</code>.</p>
+<p>These throw an exception if the string is invalid:</p>
+<pre><code class="language-kotlin">// &quot;abc&quot;.toInt() throws NumberFormatException
+</code></pre>
+<p>What happens: <code>&quot;abc&quot;</code> cannot be interpreted as an integer, so <code>toInt()</code> would fail at runtime.</p>
+<p>Prefer safe conversions for user input:</p>
+<pre><code class="language-kotlin">val input = &quot;abc&quot;
+val number = input.toIntOrNull()
+
+if (number == null) {
+    println(&quot;Invalid number&quot;)
+}
+</code></pre>
+<p>What happens: <code>toIntOrNull()</code> returns <code>null</code> instead of throwing when parsing fails. The <code>if</code> block handles that invalid-input case.</p>
+<p>Useful safe conversions:</p>
+<ul>
+<li><code>toIntOrNull()</code></li>
+<li><code>toLongOrNull()</code></li>
+<li><code>toDoubleOrNull()</code></li>
+<li><code>toFloatOrNull()</code></li>
+<li><code>toBooleanStrictOrNull()</code></li>
+</ul>
+<p>Boolean examples:</p>
+<pre><code class="language-kotlin">println(&quot;true&quot;.toBoolean()) // true
+println(&quot;TRUE&quot;.toBoolean()) // true
+println(&quot;yes&quot;.toBoolean())  // false
+
+println(&quot;true&quot;.toBooleanStrictOrNull()) // true
+println(&quot;TRUE&quot;.toBooleanStrictOrNull()) // null
+</code></pre>
+<p>What happens: <code>toBoolean()</code> is lenient about case for <code>&quot;true&quot;</code>, while <code>toBooleanStrictOrNull()</code> accepts only exactly <code>&quot;true&quot;</code> or <code>&quot;false&quot;</code>.</p>
+<h2 id="16-other-advanced-string-helpers">16. Other Advanced String Helpers</h2>
+<p>These do not appear in every beginner tutorial, but they are useful once you start writing parsing and formatting code.</p>
+<p><code>replaceBefore()</code> and <code>replaceAfter()</code>:</p>
+<pre><code class="language-kotlin">val url = &quot;https://example.com/users/42&quot;
+
+println(url.replaceBefore(&quot;://&quot;, &quot;scheme&quot;)) // scheme://example.com/users/42
+println(url.replaceAfter(&quot;/users/&quot;, &quot;id&quot;))  // https://example.com/users/id
+</code></pre>
+<p>What happens: <code>replaceBefore(&quot;://&quot;, &quot;scheme&quot;)</code> replaces everything before the delimiter and keeps the delimiter plus the rest. <code>replaceAfter(&quot;/users/&quot;, &quot;id&quot;)</code> keeps everything through <code>/users/</code> and replaces the text after it.</p>
+<p><code>replaceBeforeLast()</code> and <code>replaceAfterLast()</code>:</p>
+<pre><code class="language-kotlin">val path = &quot;/storage/photos/image.png&quot;
+
+println(path.replaceBeforeLast(&quot;/&quot;, &quot;...&quot;)) // .../image.png
+println(path.replaceAfterLast(&quot;.&quot;, &quot;jpg&quot;))  // /storage/photos/image.jpg
+</code></pre>
+<p>What happens: these methods use the last matching delimiter. The first call hides the parent path before the final <code>/</code>, and the second call changes the extension after the final <code>.</code>.</p>
+<p><code>removeRange()</code>:</p>
+<pre><code class="language-kotlin">val phone = &quot;123-456-7890&quot;
+
+println(phone.removeRange(3, 4)) // 123456-7890
+</code></pre>
+<p>What happens: <code>removeRange(3, 4)</code> removes characters starting at index <code>3</code> and stopping before index <code>4</code>. In this string, that one-character range is the first hyphen, so the result becomes <code>&quot;123456-7890&quot;</code>.</p>
+<p><code>commonPrefixWith()</code> and <code>commonSuffixWith()</code>:</p>
+<pre><code class="language-kotlin">println(&quot;flower&quot;.commonPrefixWith(&quot;flow&quot;)) // flow
+println(&quot;reading.kt&quot;.commonSuffixWith(&quot;writing.kt&quot;)) // ing.kt
+</code></pre>
+<p>What happens: <code>commonPrefixWith()</code> compares from the start until the strings differ. <code>commonSuffixWith()</code> compares from the end until they differ.</p>
+<p><code>regionMatches()</code> checks whether a region of one string matches a region of another:</p>
+<pre><code class="language-kotlin">val a = &quot;AndroidKotlin&quot;
+val b = &quot;kotlin&quot;
+
+println(a.regionMatches(7, b, 0, 6, ignoreCase = true)) // true
+</code></pre>
+<p>What happens: Kotlin compares six characters starting at index <code>7</code> in <code>a</code> with six characters starting at index <code>0</code> in <code>b</code>. With case ignored, <code>&quot;Kotlin&quot;</code> matches <code>&quot;kotlin&quot;</code>.</p>
+<h2 id="17-building-strings-efficiently">17. Building Strings Efficiently</h2>
+<p>For a few values, string templates are perfect:</p>
+<pre><code class="language-kotlin">val message = &quot;User $userId loaded in ${timeMs}ms&quot;
+</code></pre>
+<p>What happens: the values of <code>userId</code> and <code>timeMs</code> are inserted into the final message. This is ideal for short strings built from a few values.</p>
+<p>For repeated appending in a loop, use <code>StringBuilder</code>:</p>
+<pre><code class="language-kotlin">fun repeatLetters(n: Int): String {
+    val builder = StringBuilder()
+
+    for (i in 0 until n) {
+        builder.append(('a' + (i % 26)))
+    }
+
+    return builder.toString()
+}
+
+println(repeatLetters(5)) // abcde
+</code></pre>
+<p>What happens: the builder starts empty, then appends one calculated letter per loop iteration. At the end, <code>toString()</code> converts the builder into the final string.</p>
+<p>Why not this?</p>
+<pre><code class="language-kotlin">var result = &quot;&quot;
+for (i in 0 until 10000) {
+    result += &quot;a&quot;
+}
+</code></pre>
+<p>What happens: each <code>+=</code> can allocate a new string containing the old content plus <code>&quot;a&quot;</code>. Repeating that many times wastes work.</p>
+<p>Each <code>+=</code> can create a new string. <code>StringBuilder</code> avoids repeatedly copying everything.</p>
+<p>Kotlin also has <code>buildString</code>:</p>
+<pre><code class="language-kotlin">val result = buildString {
+    append(&quot;Hello&quot;)
+    append(&quot;, &quot;)
+    append(&quot;Kotlin&quot;)
+}
+
+println(result) // Hello, Kotlin
+</code></pre>
+<p>What happens: <code>buildString</code> creates a temporary <code>StringBuilder</code> for the block. Each <code>append</code> adds text, and the block returns the finished string.</p>
+<p>This is clean and idiomatic when constructing a string in one block.</p>
+<h2 id="18-useful-string-method-checklist">18. Useful String Method Checklist</h2>
+<p>Use this section as a quick review.</p>
+<p>Basic info:</p>
+<ul>
+<li><code>length</code>: number of UTF-16 code units.</li>
+<li><code>indices</code>: valid index range.</li>
+<li><code>lastIndex</code>: last valid index.</li>
+<li><code>isEmpty()</code>: true if length is 0.</li>
+<li><code>isNotEmpty()</code>: true if length is greater than 0.</li>
+<li><code>isBlank()</code>: true if empty or only whitespace.</li>
+<li><code>isNotBlank()</code>: true if at least one non-whitespace character.</li>
+<li><code>orEmpty()</code>: converts nullable string to <code>&quot;&quot;</code> if null.</li>
+</ul>
+<p>Access:</p>
+<ul>
+<li><code>s[index]</code>: character at index.</li>
+<li><code>get(index)</code>: same idea as bracket access.</li>
+<li><code>first()</code>, <code>firstOrNull()</code>: first character.</li>
+<li><code>last()</code>, <code>lastOrNull()</code>: last character.</li>
+<li><code>single()</code>, <code>singleOrNull()</code>: only character if exactly one.</li>
+</ul>
+<p>Comparison:</p>
+<ul>
+<li><code>==</code>: content equality.</li>
+<li><code>equals(other, ignoreCase = true)</code>: equality with optional case-insensitivity.</li>
+<li><code>compareTo(other)</code>: lexicographic comparison.</li>
+<li><code>compareTo(other, ignoreCase = true)</code>: case-insensitive comparison.</li>
+</ul>
+<p>Search:</p>
+<ul>
+<li><code>contains(value)</code>: checks if character or substring exists.</li>
+<li><code>&quot;x&quot; in text</code>: operator form of contains.</li>
+<li><code>startsWith(prefix)</code>: checks prefix.</li>
+<li><code>endsWith(suffix)</code>: checks suffix.</li>
+<li><code>indexOf(value)</code>: first index or <code>-1</code>.</li>
+<li><code>lastIndexOf(value)</code>: last index or <code>-1</code>.</li>
+<li><code>find { condition }</code>: first matching character.</li>
+<li><code>findLast { condition }</code>: last matching character.</li>
+</ul>
+<p>Extract:</p>
+<ul>
+<li><code>substring(startIndex)</code>: from start index to end.</li>
+<li><code>substring(startIndex, endIndex)</code>: start inclusive, end exclusive.</li>
+<li><code>substringBefore(delimiter)</code>: text before delimiter.</li>
+<li><code>substringAfter(delimiter)</code>: text after delimiter.</li>
+<li><code>substringBeforeLast(delimiter)</code>: text before last delimiter.</li>
+<li><code>substringAfterLast(delimiter)</code>: text after last delimiter.</li>
+<li><code>take(n)</code>: first <code>n</code> characters.</li>
+<li><code>takeLast(n)</code>: last <code>n</code> characters.</li>
+<li><code>drop(n)</code>: remove first <code>n</code> characters.</li>
+<li><code>dropLast(n)</code>: remove last <code>n</code> characters.</li>
+<li><code>takeWhile { condition }</code>: take characters while condition is true.</li>
+<li><code>dropWhile { condition }</code>: drop characters while condition is true.</li>
+</ul>
+<p>Clean and transform:</p>
+<ul>
+<li><code>trim()</code>: remove leading and trailing whitespace.</li>
+<li><code>trimStart()</code>: remove leading whitespace.</li>
+<li><code>trimEnd()</code>: remove trailing whitespace.</li>
+<li><code>trimIndent()</code>: clean indentation in raw strings.</li>
+<li><code>trimMargin()</code>: clean raw strings using a margin prefix.</li>
+<li><code>uppercase()</code>: uppercase copy.</li>
+<li><code>lowercase()</code>: lowercase copy.</li>
+<li><code>replace(old, new)</code>: replace all matches.</li>
+<li><code>replaceFirst(old, new)</code>: replace first match.</li>
+<li><code>replaceRange(start, end, replacement)</code>: replace part by index range.</li>
+<li><code>replaceBefore(delimiter, replacement)</code>: replace text before a delimiter.</li>
+<li><code>replaceAfter(delimiter, replacement)</code>: replace text after a delimiter.</li>
+<li><code>replaceBeforeLast(delimiter, replacement)</code>: replace text before the last delimiter.</li>
+<li><code>replaceAfterLast(delimiter, replacement)</code>: replace text after the last delimiter.</li>
+<li><code>removePrefix(prefix)</code>: remove prefix if present.</li>
+<li><code>removeSuffix(suffix)</code>: remove suffix if present.</li>
+<li><code>removeSurrounding(delimiter)</code>: remove same delimiter from both sides.</li>
+<li><code>removeSurrounding(prefix, suffix)</code>: remove matching prefix and suffix.</li>
+<li><code>removeRange(start, end)</code>: remove part by index range.</li>
+<li><code>padStart(length, char)</code>: pad left.</li>
+<li><code>padEnd(length, char)</code>: pad right.</li>
+<li><code>repeat(n)</code>: repeat string.</li>
+<li><code>reversed()</code>: reverse string.</li>
+<li><code>replaceFirstChar { ... }</code>: transform the first character.</li>
+<li><code>commonPrefixWith(other)</code>: common starting text.</li>
+<li><code>commonSuffixWith(other)</code>: common ending text.</li>
+<li><code>regionMatches(...)</code>: compare a specific region of two strings.</li>
+<li><code>String.format(...)</code>: format values with placeholders.</li>
+</ul>
+<p>Split and lines:</p>
+<ul>
+<li><code>split(delimiter)</code>: split into list.</li>
+<li><code>split(delimiter1, delimiter2, ...)</code>: split by multiple delimiters.</li>
+<li><code>lines()</code>: split text into lines.</li>
+<li><code>lineSequence()</code>: lazily process lines.</li>
+</ul>
+<p>Collection-style operations:</p>
+<ul>
+<li><code>forEach { ... }</code>: visit each character.</li>
+<li><code>count { ... }</code>: count matching characters.</li>
+<li><code>any { ... }</code>: at least one match.</li>
+<li><code>all { ... }</code>: all match.</li>
+<li><code>none { ... }</code>: none match.</li>
+<li><code>filter { ... }</code>: keep matching characters and return a string.</li>
+<li><code>map { ... }</code>: transform characters and return a list.</li>
+<li><code>chunked(size)</code>: split into chunks.</li>
+<li><code>windowed(size)</code>: sliding windows.</li>
+</ul>
+<p>Parsing:</p>
+<ul>
+<li><code>toInt()</code>, <code>toLong()</code>, <code>toDouble()</code>, <code>toFloat()</code>: parse or throw.</li>
+<li><code>toIntOrNull()</code>, <code>toLongOrNull()</code>, <code>toDoubleOrNull()</code>, <code>toFloatOrNull()</code>: parse safely.</li>
+<li><code>toBoolean()</code>: true only for <code>&quot;true&quot;</code> ignoring case.</li>
+<li><code>toBooleanStrictOrNull()</code>: safe strict boolean parsing.</li>
+</ul>
+<p>Byte and char conversion:</p>
+<ul>
+<li><code>toCharArray()</code>: convert to <code>CharArray</code>.</li>
+<li><code>encodeToByteArray()</code>: convert to bytes using UTF-8.</li>
+<li><code>decodeToString()</code>: convert bytes back to string.</li>
+</ul>
+<h2 id="19-connecting-methods-to-algorithm-patterns">19. Connecting Methods to Algorithm Patterns</h2>
+<p>Many easy string problems are built from a few patterns.</p>
+<h3 id="pattern-1-two-pointers">Pattern 1: Two Pointers</h3>
+<p>Use when checking from both ends.</p>
+<p>Examples:</p>
+<ul>
+<li>Palindrome check.</li>
+<li>Reverse vowels.</li>
+<li>Compare strings from left and right.</li>
+</ul>
+<p>Basic shape:</p>
+<pre><code class="language-kotlin">var left = 0
+var right = s.lastIndex
+
+while (left &lt; right) {
+    val a = s[left]
+    val b = s[right]
+
+    left++
+    right--
+}
+</code></pre>
+<p>What happens: <code>left</code> starts at the beginning and <code>right</code> starts at the end. Each loop compares or uses both sides, then moves the pointers toward the middle.</p>
+<h3 id="pattern-2-frequency-counting">Pattern 2: Frequency Counting</h3>
+<p>Use when comparing character counts.</p>
+<p>Examples:</p>
+<ul>
+<li>Valid anagram.</li>
+<li>First unique character.</li>
+<li>Ransom note.</li>
+</ul>
+<p>For lowercase English letters, use <code>IntArray(26)</code>:</p>
+<pre><code class="language-kotlin">val counts = IntArray(26)
+
+for (ch in s) {
+    counts[ch - 'a']++
+}
+</code></pre>
+<p>What happens: <code>ch - 'a'</code> converts a lowercase letter into an array index. For example, <code>'a' - 'a'</code> is <code>0</code>, <code>'b' - 'a'</code> is <code>1</code>, and so on.</p>
+<p>For general characters, use a map:</p>
+<pre><code class="language-kotlin">val counts = mutableMapOf&lt;Char, Int&gt;()
+
+for (ch in s) {
+    counts[ch] = counts.getOrDefault(ch, 0) + 1
+}
+</code></pre>
+<p>What happens: the map stores each character as a key and its count as the value. <code>getOrDefault(ch, 0)</code> handles characters that are being seen for the first time.</p>
+<h3 id="pattern-3-normalize-then-compare">Pattern 3: Normalize Then Compare</h3>
+<p>Use when punctuation, spaces, or case should not matter.</p>
+<pre><code class="language-kotlin">val normalized = s
+    .filter { it.isLetterOrDigit() }
+    .lowercase()
+</code></pre>
+<p>What happens: the string is cleaned by removing punctuation and spaces, then normalized to lowercase so case differences do not affect comparison.</p>
+<p>Then compare:</p>
+<pre><code class="language-kotlin">normalized == normalized.reversed()
+</code></pre>
+<p>What happens: this checks whether the cleaned string is the same forward and backward.</p>
+<h3 id="pattern-4-scan-once">Pattern 4: Scan Once</h3>
+<p>Use when you only need to remember a small amount of state.</p>
+<p>Examples:</p>
+<ul>
+<li>Longest common prefix.</li>
+<li>Add binary strings.</li>
+<li>Detect repeated adjacent characters.</li>
+</ul>
+<pre><code class="language-kotlin">for (i in s.indices) {
+    val ch = s[i]
+    // update state
+}
+</code></pre>
+<p>What happens: the loop reads each character exactly once. You update whatever state the problem needs, such as a count, a previous character, or a running answer.</p>
+<h3 id="pattern-5-build-an-answer">Pattern 5: Build an Answer</h3>
+<p>Use <code>StringBuilder</code> when constructing the result in a loop.</p>
+<pre><code class="language-kotlin">val builder = StringBuilder()
+
+for (ch in s) {
+    if (ch.isLetter()) {
+        builder.append(ch)
+    }
+}
+
+return builder.toString()
+</code></pre>
+<p>What happens: matching characters are appended one by one. The builder avoids creating a new string after every append.</p>
+<h2 id="20-worked-examples">20. Worked Examples</h2>
+<h3 id="example-1-valid-palindrome">Example 1: Valid Palindrome</h3>
+<p>Problem: return true if a string is a palindrome after ignoring non-alphanumeric characters and case.</p>
+<p>Input:</p>
+<pre><code class="language-text">&quot;A man, a plan, a canal: Panama&quot;
+</code></pre>
+<p>Output:</p>
+<pre><code class="language-text">true
+</code></pre>
+<p>Simple solution:</p>
+<pre><code class="language-kotlin">fun isPalindrome(s: String): Boolean {
+    val cleaned = s
+        .filter { it.isLetterOrDigit() }
+        .lowercase()
+
+    return cleaned == cleaned.reversed()
+}
+</code></pre>
+<p>What happens: the function removes punctuation and spaces, converts the remaining text to lowercase, then compares it with its reversed version.</p>
+<p>This is easy to read. It creates extra strings, which is fine for learning.</p>
+<p>Two-pointer solution:</p>
+<pre><code class="language-kotlin">fun isPalindrome(s: String): Boolean {
+    var left = 0
+    var right = s.lastIndex
+
+    while (left &lt; right) {
+        while (left &lt; right &amp;&amp; !s[left].isLetterOrDigit()) {
+            left++
+        }
+
+        while (left &lt; right &amp;&amp; !s[right].isLetterOrDigit()) {
+            right--
+        }
+
+        if (s[left].lowercaseChar() != s[right].lowercaseChar()) {
+            return false
+        }
+
+        left++
+        right--
+    }
+
+    return true
+}
+</code></pre>
+<p>What happens: the outer loop continues until the pointers meet. The inner loops skip punctuation and spaces, and the comparison checks the lowercase versions of the two meaningful characters.</p>
+<p>Why this is better for interviews:</p>
+<ul>
+<li>It does not build a cleaned copy.</li>
+<li>It uses constant extra space.</li>
+<li>It shows control over indices.</li>
+</ul>
+<h3 id="example-2-valid-anagram">Example 2: Valid Anagram</h3>
+<p>Problem: return true if two strings contain the same letters with the same counts.</p>
+<pre><code class="language-kotlin">fun isAnagram(s: String, t: String): Boolean {
+    if (s.length != t.length) return false
+
+    val counts = IntArray(26)
+
+    for (ch in s) {
+        counts[ch - 'a']++
+    }
+
+    for (ch in t) {
+        counts[ch - 'a']--
+    }
+
+    return counts.all { it == 0 }
+}
+</code></pre>
+<p>What happens: the first loop adds counts for <code>s</code>, and the second loop subtracts counts for <code>t</code>. If the strings are anagrams, every count returns to zero.</p>
+<p>This assumes lowercase English letters. If the input can contain any character, use a map:</p>
+<pre><code class="language-kotlin">fun isAnagramAnyChars(s: String, t: String): Boolean {
+    if (s.length != t.length) return false
+
+    val counts = mutableMapOf&lt;Char, Int&gt;()
+
+    for (ch in s) {
+        counts[ch] = counts.getOrDefault(ch, 0) + 1
+    }
+
+    for (ch in t) {
+        counts[ch] = counts.getOrDefault(ch, 0) - 1
+    }
+
+    return counts.values.all { it == 0 }
+}
+</code></pre>
+<p>What happens: this version counts any <code>Char</code>, not just lowercase English letters. The same add-then-subtract idea is used, but a map replaces the fixed 26-slot array.</p>
+<h3 id="example-3-first-unique-character">Example 3: First Unique Character</h3>
+<p>Problem: return the index of the first character that appears once. If none exists, return <code>-1</code>.</p>
+<pre><code class="language-kotlin">fun firstUniqChar(s: String): Int {
+    val counts = IntArray(26)
+
+    for (ch in s) {
+        counts[ch - 'a']++
+    }
+
+    for (i in s.indices) {
+        if (counts[s[i] - 'a'] == 1) {
+            return i
+        }
+    }
+
+    return -1
+}
+</code></pre>
+<p>What happens: the first pass counts every character. The second pass returns the first index whose character count is <code>1</code>; if no such character exists, the function returns <code>-1</code>.</p>
+<p>Input:</p>
+<pre><code class="language-text">&quot;leetcode&quot;
+</code></pre>
+<p>Output:</p>
+<pre><code class="language-text">0
+</code></pre>
+<p>Input:</p>
+<pre><code class="language-text">&quot;loveleetcode&quot;
+</code></pre>
+<p>Output:</p>
+<pre><code class="language-text">2
+</code></pre>
+<h3 id="example-4-longest-common-prefix">Example 4: Longest Common Prefix</h3>
+<p>Problem: given an array of strings, return the longest prefix common to all strings.</p>
+<pre><code class="language-kotlin">fun longestCommonPrefix(strs: Array&lt;String&gt;): String {
+    if (strs.isEmpty()) return &quot;&quot;
+
+    var prefix = strs[0]
+
+    for (i in 1 until strs.size) {
+        while (!strs[i].startsWith(prefix)) {
+            prefix = prefix.dropLast(1)
+
+            if (prefix.isEmpty()) return &quot;&quot;
+        }
+    }
+
+    return prefix
+}
+</code></pre>
+<p>What happens: the first string starts as the candidate prefix. For each later string, the prefix is shortened until that string starts with it.</p>
+<p>Example:</p>
+<pre><code class="language-kotlin">println(longestCommonPrefix(arrayOf(&quot;flower&quot;, &quot;flow&quot;, &quot;flight&quot;)))
+// fl
+</code></pre>
+<p>What happens: <code>&quot;flower&quot;</code> is shortened to <code>&quot;flow&quot;</code> for the second word, then shortened again to <code>&quot;fl&quot;</code> for <code>&quot;flight&quot;</code>.</p>
+<p>This uses:</p>
+<ul>
+<li><code>startsWith()</code></li>
+<li><code>dropLast()</code></li>
+<li><code>isEmpty()</code></li>
+</ul>
+<h3 id="example-5-add-binary">Example 5: Add Binary</h3>
+<p>Problem: add two binary strings and return the sum as a binary string.</p>
+<pre><code class="language-kotlin">fun addBinary(a: String, b: String): String {
+    var i = a.lastIndex
+    var j = b.lastIndex
+    var carry = 0
+    val result = StringBuilder()
+
+    while (i &gt;= 0 || j &gt;= 0 || carry &gt; 0) {
+        val bitA = if (i &gt;= 0) a[i] - '0' else 0
+        val bitB = if (j &gt;= 0) b[j] - '0' else 0
+
+        val sum = bitA + bitB + carry
+        result.append(sum % 2)
+        carry = sum / 2
+
+        i--
+        j--
+    }
+
+    return result.reverse().toString()
+}
+</code></pre>
+<p>What happens: the function adds bits from right to left, tracks carry just like manual addition, appends result bits in reverse order, then reverses the builder at the end.</p>
+<p>Example:</p>
+<pre><code class="language-kotlin">println(addBinary(&quot;11&quot;, &quot;1&quot;)) // 100
+</code></pre>
+<p>What happens: binary <code>11</code> is decimal <code>3</code>, and binary <code>1</code> is decimal <code>1</code>. Their sum is decimal <code>4</code>, which is binary <code>100</code>.</p>
+<p>This uses:</p>
+<ul>
+<li><code>lastIndex</code></li>
+<li>index access</li>
+<li>character-to-digit conversion with <code>ch - '0'</code></li>
+<li><code>StringBuilder</code></li>
+<li>reverse at the end</li>
+</ul>
+<h2 id="21-leetcode-easy-practice-problems">21. LeetCode Easy Practice Problems</h2>
+<p>These problems are good after learning Kotlin strings. Try solving each first, then compare with the hints.</p>
+<h3 id="1-valid-palindrome">1. Valid Palindrome</h3>
+<p><a href="https://leetcode.com/problems/valid-palindrome/description/">https://leetcode.com/problems/valid-palindrome/description/</a></p>
+<p>Skills:</p>
+<ul>
+<li><code>isLetterOrDigit()</code></li>
+<li><code>lowercaseChar()</code></li>
+<li>two pointers</li>
+<li><code>filter()</code></li>
+<li><code>reversed()</code></li>
+</ul>
+<p>Beginner approach:</p>
+<pre><code class="language-kotlin">fun isPalindrome(s: String): Boolean {
+    val cleaned = s.filter { it.isLetterOrDigit() }.lowercase()
+    return cleaned == cleaned.reversed()
+}
+</code></pre>
+<p>What happens: non-alphanumeric characters are removed, the remaining text is lowercased, and the function checks whether the cleaned text equals its reverse.</p>
+<p>Challenge: rewrite with two pointers and no extra cleaned string.</p>
+<h3 id="2-valid-anagram">2. Valid Anagram</h3>
+<p><a href="https://leetcode.com/problems/valid-anagram/description/">https://leetcode.com/problems/valid-anagram/description/</a></p>
+<p>Skills:</p>
+<ul>
+<li>frequency array</li>
+<li>looping over characters</li>
+<li><code>ch - 'a'</code></li>
+<li><code>all { it == 0 }</code></li>
+</ul>
+<p>Hint:</p>
+<pre><code class="language-kotlin">val counts = IntArray(26)
+</code></pre>
+<p>What happens: this creates 26 integer slots, one for each lowercase English letter from <code>a</code> to <code>z</code>.</p>
+<p>Increment for characters in <code>s</code>, decrement for characters in <code>t</code>.</p>
+<h3 id="3-first-unique-character-in-a-string">3. First Unique Character in a String</h3>
+<p><a href="https://leetcode.com/problems/first-unique-character-in-a-string/description/">https://leetcode.com/problems/first-unique-character-in-a-string/description/</a></p>
+<p>Skills:</p>
+<ul>
+<li>frequency counting</li>
+<li><code>indices</code></li>
+<li>array lookup</li>
+</ul>
+<p>Hint:</p>
+<p>First pass counts characters. Second pass finds the first index with count <code>1</code>.</p>
+<h3 id="4-ransom-note">4. Ransom Note</h3>
+<p><a href="https://leetcode.com/problems/ransom-note/description/">https://leetcode.com/problems/ransom-note/description/</a></p>
+<p>Problem: can you build <code>ransomNote</code> using letters from <code>magazine</code>?</p>
+<p>Skills:</p>
+<ul>
+<li>frequency counting</li>
+<li>early return</li>
+</ul>
+<p>Hint:</p>
+<p>Count letters in <code>magazine</code>, then consume letters from <code>ransomNote</code>.</p>
+<pre><code class="language-kotlin">fun canConstruct(ransomNote: String, magazine: String): Boolean {
+    val counts = IntArray(26)
+
+    for (ch in magazine) {
+        counts[ch - 'a']++
+    }
+
+    for (ch in ransomNote) {
+        val index = ch - 'a'
+        counts[index]--
+
+        if (counts[index] &lt; 0) {
+            return false
+        }
+    }
+
+    return true
+}
+</code></pre>
+<p>What happens: the magazine loop records available letters. The ransom-note loop spends those letters; if any count drops below zero, the note needs a letter that is not available.</p>
+<h3 id="5-longest-common-prefix">5. Longest Common Prefix</h3>
+<p><a href="https://leetcode.com/problems/longest-common-prefix/description/">https://leetcode.com/problems/longest-common-prefix/description/</a></p>
+<p>Skills:</p>
+<ul>
+<li><code>startsWith()</code></li>
+<li><code>dropLast()</code></li>
+<li>arrays of strings</li>
+</ul>
+<p>Hint:</p>
+<p>Start with the first string as prefix. Keep shortening it until every string starts with it.</p>
+<h3 id="6-add-binary">6. Add Binary</h3>
+<p><a href="https://leetcode.com/problems/add-binary/description/">https://leetcode.com/problems/add-binary/description/</a></p>
+<p>Skills:</p>
+<ul>
+<li>scan from the end</li>
+<li>carry</li>
+<li><code>StringBuilder</code></li>
+<li><code>lastIndex</code></li>
+</ul>
+<p>Hint:</p>
+<p>Work right to left, just like adding numbers by hand.</p>
+<h3 id="7-reverse-string">7. Reverse String</h3>
+<p><a href="https://leetcode.com/problems/reverse-string/description/">https://leetcode.com/problems/reverse-string/description/</a></p>
+<p>Kotlin version often uses <code>CharArray</code>.</p>
+<p>Skills:</p>
+<ul>
+<li>two pointers</li>
+<li>swapping</li>
+<li><code>toCharArray()</code></li>
+</ul>
+<pre><code class="language-kotlin">fun reverseString(s: CharArray): Unit {
+    var left = 0
+    var right = s.lastIndex
+
+    while (left &lt; right) {
+        val temp = s[left]
+        s[left] = s[right]
+        s[right] = temp
+
+        left++
+        right--
+    }
+}
+</code></pre>
+<p>What happens: the function swaps the first and last characters, then moves inward and repeats. Because the input is a <code>CharArray</code>, the swaps modify the array in place.</p>
+<p>Note: this problem uses <code>CharArray</code>, not <code>String</code>, because strings are immutable.</p>
+<h3 id="8-reverse-vowels-of-a-string">8. Reverse Vowels of a String</h3>
+<p><a href="https://leetcode.com/problems/reverse-vowels-of-a-string/description/">https://leetcode.com/problems/reverse-vowels-of-a-string/description/</a></p>
+<p>Skills:</p>
+<ul>
+<li>two pointers</li>
+<li><code>toCharArray()</code></li>
+<li><code>String(chars)</code></li>
+<li>helper function</li>
+</ul>
+<p>Hint:</p>
+<p>Move <code>left</code> until it points to a vowel. Move <code>right</code> until it points to a vowel. Swap them.</p>
+<pre><code class="language-kotlin">fun reverseVowels(s: String): String {
+    val chars = s.toCharArray()
+    var left = 0
+    var right = chars.lastIndex
+
+    fun isVowel(ch: Char): Boolean {
+        return ch.lowercaseChar() in setOf('a', 'e', 'i', 'o', 'u')
+    }
+
+    while (left &lt; right) {
+        while (left &lt; right &amp;&amp; !isVowel(chars[left])) left++
+        while (left &lt; right &amp;&amp; !isVowel(chars[right])) right--
+
+        val temp = chars[left]
+        chars[left] = chars[right]
+        chars[right] = temp
+
+        left++
+        right--
+    }
+
+    return String(chars)
+}
+</code></pre>
+<p>What happens: the function converts the string to a mutable character array, swaps vowels from both ends, then creates a new string from the modified array.</p>
+<p>Small improvement: avoid creating the vowel set on every helper call.</p>
+<pre><code class="language-kotlin">val vowels = setOf('a', 'e', 'i', 'o', 'u')
+fun isVowel(ch: Char) = ch.lowercaseChar() in vowels
+</code></pre>
+<p>What happens: the set is created once, and the helper checks membership in that set. This avoids rebuilding the same set for every character check.</p>
+<h3 id="9-length-of-last-word">9. Length of Last Word</h3>
+<p><a href="https://leetcode.com/problems/length-of-last-word/description/">https://leetcode.com/problems/length-of-last-word/description/</a></p>
+<p>Skills:</p>
+<ul>
+<li><code>trimEnd()</code></li>
+<li>scanning backward</li>
+<li><code>split()</code></li>
+</ul>
+<p>Beginner approach:</p>
+<pre><code class="language-kotlin">fun lengthOfLastWord(s: String): Int {
+    return s.trim()
+        .split(&quot; &quot;)
+        .filter { it.isNotEmpty() }
+        .last()
+        .length
+}
+</code></pre>
+<p>What happens: the code trims outside spaces, splits on spaces, removes empty pieces, takes the last remaining word, and returns its length.</p>
+<p>More efficient approach:</p>
+<pre><code class="language-kotlin">fun lengthOfLastWord(s: String): Int {
+    var i = s.lastIndex
+
+    while (i &gt;= 0 &amp;&amp; s[i] == ' ') {
+        i--
+    }
+
+    var length = 0
+
+    while (i &gt;= 0 &amp;&amp; s[i] != ' ') {
+        length++
+        i--
+    }
+
+    return length
+}
+</code></pre>
+<p>What happens: the first loop skips trailing spaces. The second loop counts characters backward until it reaches the space before the last word.</p>
+<h3 id="10-detect-capital">10. Detect Capital</h3>
+<p><a href="https://leetcode.com/problems/detect-capital/description/">https://leetcode.com/problems/detect-capital/description/</a></p>
+<p>Problem: return true if capitalization is valid:</p>
+<ul>
+<li>All letters uppercase: <code>&quot;USA&quot;</code></li>
+<li>All letters lowercase: <code>&quot;leetcode&quot;</code></li>
+<li>Only first letter uppercase: <code>&quot;Google&quot;</code></li>
+</ul>
+<p>Skills:</p>
+<ul>
+<li><code>isUpperCase()</code></li>
+<li><code>isLowerCase()</code></li>
+<li><code>drop(1)</code></li>
+<li><code>all { ... }</code></li>
+</ul>
+<pre><code class="language-kotlin">fun detectCapitalUse(word: String): Boolean {
+    return word.all { it.isUpperCase() } ||
+        word.all { it.isLowerCase() } ||
+        (word.first().isUpperCase() &amp;&amp; word.drop(1).all { it.isLowerCase() })
+}
+</code></pre>
+<p>What happens: the function checks the three valid capitalization patterns directly: all uppercase, all lowercase, or first uppercase with the rest lowercase.</p>
+<h2 id="22-mini-exercises">22. Mini Exercises</h2>
+<p>Try these before jumping into LeetCode.</p>
+<h3 id="exercise-1-normalize-a-username">Exercise 1: Normalize a Username</h3>
+<p>Write a function that:</p>
+<ul>
+<li>trims spaces</li>
+<li>lowercases the username</li>
+<li>removes spaces inside it</li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-text">&quot;  Kotlin User  &quot; -&gt; &quot;kotlinuser&quot;
+</code></pre>
+<p>Possible solution:</p>
+<pre><code class="language-kotlin">fun normalizeUsername(input: String): String {
+    return input.trim()
+        .lowercase()
+        .filter { !it.isWhitespace() }
+}
+</code></pre>
+<p>What happens: <code>trim()</code> removes outside whitespace, <code>lowercase()</code> normalizes case, and <code>filter</code> removes any remaining whitespace inside the username.</p>
+<h3 id="exercise-2-mask-an-email">Exercise 2: Mask an Email</h3>
+<p>Input:</p>
+<pre><code class="language-text">&quot;alex@example.com&quot;
+</code></pre>
+<p>Output:</p>
+<pre><code class="language-text">&quot;a***@example.com&quot;
+</code></pre>
+<p>Possible solution:</p>
+<pre><code class="language-kotlin">fun maskEmail(email: String): String {
+    val name = email.substringBefore(&quot;@&quot;)
+    val domain = email.substringAfter(&quot;@&quot;)
+
+    if (name.isEmpty() || domain == email) return email
+
+    return &quot;${name.first()}***@$domain&quot;
+}
+</code></pre>
+<p>What happens: the function splits the email into the local name and domain, keeps the first character of the name, hides the rest with <code>***</code>, and then adds the domain back.</p>
+<h3 id="exercise-3-count-vowels">Exercise 3: Count Vowels</h3>
+<pre><code class="language-kotlin">fun countVowels(s: String): Int {
+    val vowels = setOf('a', 'e', 'i', 'o', 'u')
+    return s.count { it.lowercaseChar() in vowels }
+}
+</code></pre>
+<p>What happens: each character is lowercased before checking the vowel set, so uppercase and lowercase vowels both count.</p>
+<h3 id="exercise-4-convert-kebab-case-to-title">Exercise 4: Convert Kebab Case to Title</h3>
+<p>Input:</p>
+<pre><code class="language-text">&quot;kotlin-string-templates&quot;
+</code></pre>
+<p>Output:</p>
+<pre><code class="language-text">&quot;Kotlin String Templates&quot;
+</code></pre>
+<p>Possible solution:</p>
+<pre><code class="language-kotlin">fun kebabToTitle(input: String): String {
+    return input
+        .split(&quot;-&quot;)
+        .joinToString(&quot; &quot;) { word -&gt;
+            word.replaceFirstChar { it.uppercase() }
+        }
+}
+</code></pre>
+<p>What happens: the string is split at each hyphen, each word has its first character capitalized, and the words are joined back together with spaces.</p>
+<h3 id="exercise-5-check-strong-password-basics">Exercise 5: Check Strong Password Basics</h3>
+<p>Rules:</p>
+<ul>
+<li>At least 8 characters.</li>
+<li>Has at least one uppercase letter.</li>
+<li>Has at least one lowercase letter.</li>
+<li>Has at least one digit.</li>
+</ul>
+<pre><code class="language-kotlin">fun isStrongPassword(password: String): Boolean {
+    return password.length &gt;= 8 &amp;&amp;
+        password.any { it.isUpperCase() } &amp;&amp;
+        password.any { it.isLowerCase() } &amp;&amp;
+        password.any { it.isDigit() }
+}
+</code></pre>
+<p>What happens: the function combines four boolean checks. The password must satisfy all of them because the checks are connected with <code>&amp;&amp;</code>.</p>
+<h2 id="23-common-mistakes">23. Common Mistakes</h2>
+<h3 id="mistake-1-forgetting-strings-are-immutable">Mistake 1: Forgetting Strings Are Immutable</h3>
+<p>Wrong expectation:</p>
+<pre><code class="language-kotlin">val s = &quot;hello&quot;
+s.uppercase()
+println(s) // still hello
+</code></pre>
+<p>What happens: <code>uppercase()</code> returns a new string, but the code ignores that return value. The original <code>s</code> remains <code>&quot;hello&quot;</code>.</p>
+<p>Correct:</p>
+<pre><code class="language-kotlin">val s = &quot;hello&quot;
+val upper = s.uppercase()
+println(upper) // HELLO
+</code></pre>
+<p>What happens: the uppercase result is stored in <code>upper</code>, so it can be printed or reused.</p>
+<h3 id="mistake-2-using-end-index-incorrectly">Mistake 2: Using End Index Incorrectly</h3>
+<pre><code class="language-kotlin">val s = &quot;Kotlin&quot;
+println(s.substring(0, 3)) // Kot, not Kotl
+</code></pre>
+<p>What happens: index <code>3</code> is the stopping point, not an included character. Kotlin returns indexes <code>0</code>, <code>1</code>, and <code>2</code>.</p>
+<p>The end index is exclusive.</p>
+<h3 id="mistake-3-not-handling-indexof-returning--1">Mistake 3: Not Handling <code>indexOf()</code> Returning <code>-1</code></h3>
+<pre><code class="language-kotlin">val email = &quot;username&quot;
+val index = email.indexOf(&quot;@&quot;)
+
+if (index == -1) {
+    println(&quot;Invalid email&quot;)
+}
+</code></pre>
+<p>What happens: <code>indexOf(&quot;@&quot;)</code> returns <code>-1</code> when the delimiter is missing. The check prevents later code from treating <code>-1</code> like a real position.</p>
+<p>Never assume a delimiter exists unless the problem guarantees it.</p>
+<h3 id="mistake-4-forgetting-that-split--can-produce-empty-strings">Mistake 4: Forgetting That <code>split(&quot; &quot;)</code> Can Produce Empty Strings</h3>
+<pre><code class="language-kotlin">val text = &quot;one   two&quot;
+println(text.split(&quot; &quot;)) // [one, , , two]
+</code></pre>
+<p>What happens: every single space is treated as a separator. Repeated spaces create empty strings between the separators.</p>
+<p>Prefer filtering empty pieces when repeated spaces are possible:</p>
+<pre><code class="language-kotlin">println(text.split(&quot; &quot;).filter { it.isNotEmpty() }) // [one, two]
+</code></pre>
+<p>What happens: the split still creates empty pieces, but <code>filter</code> removes them from the final list.</p>
+<h3 id="mistake-5-ignoring-locale-in-app-code">Mistake 5: Ignoring Locale in App Code</h3>
+<p>For internal algorithm problems:</p>
+<pre><code class="language-kotlin">val normalized = input.lowercase()
+</code></pre>
+<p>What happens: this uses the default casing behavior. That is usually fine for coding practice, but app code may need more predictable locale handling.</p>
+<p>For Android/JVM app code where stable behavior matters:</p>
+<pre><code class="language-kotlin">import java.util.Locale
+
+val normalized = input.lowercase(Locale.ROOT)
+</code></pre>
+<p>What happens: <code>Locale.ROOT</code> makes the casing operation language-neutral and stable across devices.</p>
+<h3 id="mistake-6-rebuilding-strings-with--in-large-loops">Mistake 6: Rebuilding Strings with <code>+=</code> in Large Loops</h3>
+<p>For small strings, it is fine. For repeated appending, prefer <code>StringBuilder</code> or <code>buildString</code>.</p>
+<pre><code class="language-kotlin">val result = buildString {
+    for (ch in &quot;abc&quot;) {
+        append(ch.uppercaseChar())
+    }
+}
+</code></pre>
+<p>What happens: <code>buildString</code> collects all appended characters efficiently and returns one final string.</p>
+<h2 id="24-suggested-learning-path">24. Suggested Learning Path</h2>
+<p>Follow this order:</p>
+<ol>
+<li>Create simple strings and use string templates.</li>
+<li>Practice <code>length</code>, <code>indices</code>, <code>lastIndex</code>, and <code>s[i]</code>.</li>
+<li>Learn <code>contains</code>, <code>startsWith</code>, <code>endsWith</code>, <code>indexOf</code>.</li>
+<li>Practice <code>substring</code>, <code>take</code>, <code>drop</code>, and <code>split</code>.</li>
+<li>Use <code>trim</code>, <code>lowercase</code>, <code>uppercase</code>, and <code>replace</code>.</li>
+<li>Use character checks like <code>isDigit()</code> and <code>isLetterOrDigit()</code>.</li>
+<li>Solve mini exercises.</li>
+<li>Solve LeetCode easy problems with frequency arrays and two pointers.</li>
+</ol>
+<h2 id="25-quick-reference-examples">25. Quick Reference Examples</h2>
+<pre><code class="language-kotlin">val s = &quot;  Kotlin Strings  &quot;
+
+println(s.trim())                 // Kotlin Strings
+println(s.lowercase())            //   kotlin strings
+println(s.uppercase())            //   KOTLIN STRINGS
+println(s.contains(&quot;lin&quot;))        // true
+println(s.indexOf(&quot;Strings&quot;))     // 9
+println(s.trim().split(&quot; &quot;))      // [Kotlin, Strings]
+println(s.trim().substring(0, 6)) // Kotlin
+println(s.trim().takeLast(7))     // Strings
+println(s.trim().reversed())      // sgnirtS niltoK
+</code></pre>
+<p>What happens: each line applies one common string operation to the same base string. Notice that operations like <code>trim()</code> return a cleaned copy, so the later chained calls can use that cleaned copy without changing the original <code>s</code>.</p>
+<p>String template recap:</p>
+<pre><code class="language-kotlin">val language = &quot;Kotlin&quot;
+val year = 2011
+
+println(&quot;$language was first released in $year&quot;)
+println(&quot;${language.uppercase()} has ${language.length} letters&quot;)
+</code></pre>
+<p>What happens: the first line inserts two simple variables. The second line evaluates two expressions inside <code>${...}</code> before inserting their results.</p>
+<p>Final mental model:</p>
+<ul>
+<li>A <code>String</code> is immutable text.</li>
+<li>You access characters with indices.</li>
+<li>Most methods return a new string.</li>
+<li>Templates make strings readable.</li>
+<li><code>StringBuilder</code> helps when building in loops.</li>
+<li>LeetCode string problems usually combine indexing, character checks, frequency counts, and two pointers.</li>
+</ul>
+
+  </main>
+
+          
+            <footer role="contentinfo">
+  <div
+  
+  >
+    <label for="themer">
+      dark theme: <input type="checkbox" id="themer" class="vh">
+      
+      <span aria-hidden="true"></span>
+    </label>
+  </div>
+  
+    Built with <a href="https://gohugo.io/">Hugo</a> using the <a href="https://github.com/BulkBeing/cupper-hugo-theme">Cupper theme</a>.
+  
+</footer>
+
+          
+        </div>
+      </div>
+    </div>
+    
+
+<script src="/kotlin-learning-path/js/dom-scripts.js"></script>  
+
+<script src="/kotlin-learning-path/js/prism.js"></script>
+
+
+
+<script src="/kotlin-learning-path/js/search.7aef046a0cc8b0c532f1d20087b920459bc868c936bb48a6ae221eceefca2d07.js"></script>
+
+<link rel="stylesheet" href="/kotlin-learning-path/css/search.fe0cd54a21628574bff49d721c827d1bb165ab56b0f22dd55ae78addbe61c309.css"></link>
+
+
+
+
+    
+    
+  
+
+  </body>
+</html>
